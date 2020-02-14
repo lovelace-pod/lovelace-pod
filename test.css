@@ -1,0 +1,15 @@
+#body-container{
+    height: 100vh;
+}
+
+#picture{
+    height: 50vh;
+}
+
+#text {
+    height: 35vh;
+}
+
+#button {
+    height: 15vh;
+}
