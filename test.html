@@ -9,30 +9,49 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <!-- 8-bit Font/CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="test.css">
+
+
+    <title>Hello, world!</title>
 </head>
 <body>
-<div class="container-fluid m-0 p-0" id="body-container">
-    <div class="row" id="picture">
-        <div class="col-12 w-100 bg-primary" id="pic-div">
-            <p>Picture</p>
-            <span id="chest-pic"></span>
+<!------ Main Container holding Everything Start -->
+    <div class="container-fluid m-0" id="body-container">
+<!---------- Picture Row Start -->
+        <div class="row" id="picture">
+<!---------- Background Image -->
+            <img src="imgonline-com-ua-8bit-Picture-VgfqdgGS4sDAE.png" id="inside-house" alt="inside-home">
+            <div class="col-12 w-100" id="pic-div"></div>
         </div>
-    </div>
-    <div class="row" id="text">
-        <div class="col-12 w-100 bg-secondary">
-            <p>text</p>
+<!---------- Picture Row End -->
+
+<!---------- Text Row Start -->
+        <div class="row" id="text">
+            <div class="col-12 w-100 bg-secondary">
+                <p class="text-center text-wrap"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aspernatur consectetur delectus dicta doloribus, eius eveniet, excepturi facere fugiat incidunt iure, modi natus nemo nesciunt pariatur quae quisquam vitae?</span><span>A architecto aut consequatur corporis cumque delectus dolor eaque eos eum harum ipsam ipsum minima nesciunt nisi optio perspiciatis qui reprehenderit, repudiandae sapiente ullam ut veritatis voluptates? Atque, beatae impedit!</span></p>
+            </div>
         </div>
-    </div>
-    <div class="row" id="button">
-        <div class="col-12 w-100 bg-dark">
-            <p>buttons</p>
+<!---------- Text Row End -->
+
+<!---------- Button Row Start -->
+        <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
+            <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
+                <button type="button" class="btn btn-outline-dark game-button-border">Go Outside</button>
+                <button type="button" class="btn btn-outline-dark game-button-border">Look Around</button>
+            </div>
         </div>
+<!---------- Button Row End -->
+
     </div>
-</div>
+<!------ Main Container holding Everything End -->
 
 
+<!-- Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
