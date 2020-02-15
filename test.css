@@ -1,0 +1,37 @@
+
+/*.game-icon*
+/
+/
+ */
+
+/*** Entire Page Container ***/
+#body-container{
+    height: 100vh;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/*** Picture Row ***/
+#picture{
+    height: 50vh;
+}
+
+/*** Background Image Inside House ***/
+#inside-house{
+    object-fit: fill;
+    max-height: 100%;
+    width: 100%;
+}
+
+/*** Text Row ***/
+#text {
+    height: 35vh;
+}
+
+/*** Button Row ***/
+#button {
+    height: 15vh;
+}
+.game-button-border{
+    border: 2px solid black;
+    color: black;
+}
