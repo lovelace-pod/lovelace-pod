@@ -1,0 +1,27 @@
+
+#mainContainer h1 {
+    top: 45%;
+    left: 39%;
+    z-index: 1;
+}
+
+#mainContainer a {
+    top: 65%;
+    left: 45%;
+    z-index: 1;
+}
+
+#Kirby {
+    height: 150px;
+    bottom: 6%;
+    left: 110%;
+    z-index: 1;
+    animation: kirby-walk 15s 1;
+    animation-timing-function: linear;
+}
+
+@keyframes kirby-walk {
+    from {left: -110%}
+    to  {left: 110%}
+}
+
