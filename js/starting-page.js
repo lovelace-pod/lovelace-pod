@@ -7,7 +7,7 @@
         let makeKirby = document.createElement("img");
         makeKirby.setAttribute('class', "position-absolute");
         makeKirby.setAttribute('id',"Kirby");
-        makeKirby.setAttribute('src', "img/kirby.gif");
+        makeKirby.setAttribute('src', "../img/kirby.gif");
         main.appendChild(makeKirby);
     }, 5000);
 
