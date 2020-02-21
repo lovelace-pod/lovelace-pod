@@ -1,0 +1,33 @@
+
+/*.game-icon*
+/
+/
+ */
+
+/*** Entire Page Container ***/
+#body-container{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5em;
+}
+
+/*** Picture Row ***/
+#picture{
+    height: 60vh;
+}
+
+/*** Background Image Inside House ***/
+#Intro-Cat {
+    object-fit: cover;
+    max-height: 100%;
+    width: 100%;
+}
+
+/*** Text Row ***/
+#text {
+    height: 20vh;
+}
+
+/*** Button Row ***/
+#button {
+    height: 20vh;
+}
