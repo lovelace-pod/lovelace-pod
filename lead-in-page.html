@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- 8-bit Font/CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/intro-page.css">
+
+
+    <title>Lovelace Game</title>
+</head>
+<body>
+<!------ Main Container holding Everything Start -->
+<div class="container-fluid m-0 vh-100 d-flex flex-column justify-content-center align-items-center" id="body-container">
+     <!---------- Text Row Start -->
+        <p id="leadInLine1"></p>
+        <p id="leadInLine2"></p>
+        <a style="display: none" href="intro-page.html" id="leadBtn">
+        <button class="nes-btn">Continue</button>
+        </a>
+    <!---------- Text Row End -->
+
+</div>
+<!------ Main Container holding Everything End -->
+
+
+<script>
+
+    let txt1 = "Today I start my first day at this tech school. I got this!";
+    let txt1Line = document.getElementById("leadInLine1");
+    let txt2 = "I hope...";
+    let txt2Line = document.getElementById("leadInLine2");
+    let leadBtnShow = document.getElementById("leadBtn");
+
+    var l1 = 0;
+    var l2 = 0;
+    var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+    function leadIn1TypeWriter() {
+        if (l1 < txt1.length) {
+            txt1Line.innerHTML += txt1.charAt(l1);
+            l1++;
+            setTimeout(leadIn1TypeWriter, speed);
+        }
+    }
+    function leadIn2TypeWriter() {
+        if (l2 < txt2.length) {
+            txt2Line.innerHTML += txt2.charAt(l2);
+            l2++;
+            setTimeout(leadIn2TypeWriter, speed);
+        }
+    }
+
+    // function typeWriter(id, text) {
+    //     for (let i= 0; i < text.length;i++) {
+    //         id.innerHTML += text.charAt(i);
+    //     }
+    // }
+    //
+    let line1Type = setTimeout(function () {
+        leadIn1TypeWriter();
+    },500);
+    let line2Type = setTimeout(function() {
+        leadIn2TypeWriter();
+    },4500);
+    let continueBtn = setTimeout(function () {
+        leadBtnShow.removeAttribute("style")
+    },6000)
+
+</script>
+<!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
