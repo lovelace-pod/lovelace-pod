@@ -4,42 +4,88 @@
 // Array of Objects with Riddles
 var riddles = [
     {
-        riddle: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
-        answer: "An echo."
+        riddle: "I will crack if you drop me. If you smile at me, I’ll smile back. What am I?",
+        answer1: "An egg.",
+        answer2: "A vase.",
+        answer3: "A mirror.",
+        answer4: "A nut.",
+        correctAnswer: "A mirror."
+
+
     },
 
     {
-        riddle: "You measure my life in hours and I serve you by expiring. I’m quick when I’m thin and slow when I’m fat. The wind is my enemy.",
-        answer: "A candle."
+
+        riddle: "Pick me up and scratch my head. I’ll turn red and then black. What am I?",
+        answer1: "A match.",
+        answer2: "A candle",
+        answer3: "A caterpillar",
+        answer4: "None of the above.",
+        correctAnswer: "A match."
     },
 
     {
-        riddle:"I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?",
-        answer: "A map"
+
+        riddle: "What is always coming but never arrives?",
+        answer1: "A train.",
+        answer2: "Your paycheck.",
+        answer3: "Tomorrow.",
+        answer4: "The mail.",
+        correctAnswer: "Tomorrow."
     },
 
     {
-        riddle: "What is seen in the middle of March and April that can’t be seen at the beginning or end of either month?",
-        answer: "The letter 'R'."
+
+        riddle: "If you have it, you want to share it. If you share it, you don’t have it anymore. What is it?",
+        answer1: "Love.",
+        answer2: "A secret.",
+        answer3: "Talent.",
+        answer4: "None of the above.",
+        correctAnswer: "A secret."
     },
     {
-        riddle: "What disappears as soon as you say its name? ",
-        answer: "Silence."
+
+        riddle: "What has 42 eyes and 12 faces?",
+        answer1: "A pair of dice.",
+        answer2: "Your mother-in-law.",
+        answer3: "An alien.",
+        answer4: "A hockey team.",
+        correctAnswer: "A pair of dice."
     },
     {
+
         riddle: "This belongs to you, but everyone else uses it. ",
-        answer: "Your name."
+        answer1: "Your voice.",
+        answer2: "A shadow.",
+        answer3: "Your code.",
+        answer4: "A chair.",
+        correctAnswer: "Your name."
     },
     {
-        riddle: "I am an animal named after the animal that I eat, what am I?",
-        answer: "An Anteater."
+
+        riddle: "I can’t be seen, but I can be heard. I won’t answer until spoken to. What am I?",
+        answer1: "A dream.",
+        answer2: "Children.",
+        answer3: "A voice.",
+        answer4: "An echo.",
+        correctAnswer: "An echo."
     },
     {
-        riddle: "I am neither a guest or a trespasser be, to this place I belong, it belongs also to me.",
-        answer: "Home."
+
+        riddle: "What gets thrown out when it’s needed, but stored away when it’s not?",
+        answer1: "Garbage.",
+        answer2: "An anchor.",
+        answer3: "A message in a bottle.",
+        answer4: "A ship's captain.",
+        correctAnswer: "An anchor."
     },
     {
-        riddle: "I have numbers on my face but can't find 13 any place. What am i?",
-        answer: "A clock."
+
+        riddle: "I start off dry but emerge wet. I go in light but emerge heavy. What am I?",
+        answer1: "Rice.",
+        answer2: "Powder.",
+        answer3: "A swimmer.",
+        answer4: "A tea bag.",
+        correctAnswer: "A tea bag."
     }
 ];
