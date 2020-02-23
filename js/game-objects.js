@@ -2,7 +2,7 @@
 
 
 // Array of Objects with Riddles
-var riddles = [
+var riddlesArray1 = [
     {
         riddle: "I will crack if you drop me. If you smile at me, I’ll smile back. What am I?",
         answer1: "An egg.",
@@ -32,7 +32,10 @@ var riddles = [
         answer3: "Tomorrow.",
         answer4: "The mail.",
         correctAnswer: "Tomorrow."
-    },
+    }
+];
+
+var riddlesArray2= [
 
     {
 
@@ -60,7 +63,11 @@ var riddles = [
         answer3: "Your code.",
         answer4: "A chair.",
         correctAnswer: "Your name."
-    },
+    }
+];
+
+
+var riddlesArray3 = [
     {
 
         riddle: "I can’t be seen, but I can be heard. I won’t answer until spoken to. What am I?",
@@ -89,3 +96,4 @@ var riddles = [
         correctAnswer: "A tea bag."
     }
 ];
+
