@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<!-- 8-bit Font/CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/intro-page.css">
+
+
+	<title>Lovelace Game</title>
+</head>
+<body>
+<!------ Main Container holding Everything Start -->
+<div class="container-fluid m-0 vh-100" id="body-container">
+	<!---------- Picture Row Start -->
+	<div class="row" id="picture">
+		<!---------- Background Image -->
+		<img src="img/photo-of-empty-class-room-2675061.jpg" id="dark-classroom" alt="empty and dark classroom">
+	</div>
+	<!---------- Picture Row End -->
+
+	<!---------- Text Row Start -->
+	<div class="row" id="text">
+		<div class="col-12 w-100 bg-secondary">
+			<p class="text-wrap mt-3" id="introTextLine"></p>
+		</div>
+	</div>
+	<!---------- Text Row End -->
+
+	<!---------- Button Row Start -->
+	<div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
+		<div class="col-12 w-100 bg-secondary d-flex justify-content-around">
+			<button type="button" id="answer1" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="answer2" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="answer3" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="answer4" class="btn btn-outline-dark game-button-border"></button>
+		</div>
+	</div>
+	<!---------- Button Row End -->
+
+</div>
+<!------ Main Container holding Everything End -->
+
+<script>
+    "use strict";
+
+
+    // Array of Objects with Riddles
+    var riddlesArray1 = [
+        {
+            riddle: "I will crack if you drop me. If you smile at me, I’ll smile back. What am I?",
+            answer1: "An egg.",
+            answer2: "A vase.",
+            answer3: "A mirror.",
+            answer4: "A nut.",
+            correctAnswer: "A mirror."
+
+
+        },
+
+        {
+
+            riddle: "Pick me up and scratch my head. I’ll turn red and then black. What am I?",
+            answer1: "A match.",
+            answer2: "A candle",
+            answer3: "A caterpillar",
+            answer4: "None of the above.",
+            correctAnswer: "A match."
+        },
+
+        {
+
+            riddle: "What is always coming but never arrives?",
+            answer1: "A train.",
+            answer2: "Your paycheck.",
+            answer3: "Tomorrow.",
+            answer4: "The mail.",
+            correctAnswer: "Tomorrow."
+        }
+    ];
+
+    var riddlesArray2= [
+
+        {
+
+            riddle: "If you have it, you want to share it. If you share it, you don’t have it anymore. What is it?",
+            answer1: "Love.",
+            answer2: "A secret.",
+            answer3: "Talent.",
+            answer4: "None of the above.",
+            correctAnswer: "A secret."
+        },
+        {
+
+            riddle: "What has 42 eyes and 12 faces?",
+            answer1: "A pair of dice.",
+            answer2: "Your mother-in-law.",
+            answer3: "An alien.",
+            answer4: "A hockey team.",
+            correctAnswer: "A pair of dice."
+        },
+        {
+
+            riddle: "This belongs to you, but everyone else uses it. ",
+            answer1: "Your voice.",
+            answer2: "A shadow.",
+            answer3: "Your code.",
+            answer4: "A chair.",
+            correctAnswer: "Your name."
+        }
+    ];
+
+
+    var riddlesArray3 = [
+        {
+
+            riddle: "I can’t be seen, but I can be heard. I won’t answer until spoken to. What am I?",
+            answer1: "A dream.",
+            answer2: "Children.",
+            answer3: "A voice.",
+            answer4: "An echo.",
+            correctAnswer: "An echo."
+        },
+        {
+
+            riddle: "What gets thrown out when it’s needed, but stored away when it’s not?",
+            answer1: "Garbage.",
+            answer2: "An anchor.",
+            answer3: "A message in a bottle.",
+            answer4: "A ship's captain.",
+            correctAnswer: "An anchor."
+        },
+        {
+
+            riddle: "I start off dry but emerge wet. I go in light but emerge heavy. What am I?",
+            answer1: "Rice.",
+            answer2: "Powder.",
+            answer3: "A swimmer.",
+            answer4: "A tea bag.",
+            correctAnswer: "A tea bag."
+        }
+    ];
+
+    
+    
+    let txtLine = document.getElementById("introTextLine");
+    let answer1 = document.getElementById("answer1");
+    let answer2 = document.getElementById("answer2");
+    let answer3 = document.getElementById("answer3");
+    let answer4 = document.getElementById("answer4");
+
+	function displayRiddle(arr) {
+	    txtLine.innerHTML = riddlesArray1[0].riddle;
+
+    }
+    displayRiddle(riddlesArray1);
+	
+	function displayAnswers(arr) {
+	    answer1.innerHTML = riddlesArray1[0].answer1;
+	    answer2.innerHTML = riddlesArray1[0].answer2;
+	    answer3.innerHTML = riddlesArray1[0].answer3;
+	    answer4.innerHTML = riddlesArray1[0].answer4;
+
+    }
+    displayAnswers(riddlesArray1);
+
+
+</script>
+
+<!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
