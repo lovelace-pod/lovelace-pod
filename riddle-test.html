@@ -53,6 +53,10 @@
 
 <script>
     "use strict";
+    var currentRiddleObject;
+    var currentRiddleArray = [];
+    var currentRiddleObjectNum = 1;
+    var currentRiddleArrayNum = 1;
 
 
     // Array of Objects with Riddles
@@ -63,7 +67,7 @@
             answer2: "A vase.",
             answer3: "A mirror.",
             answer4: "A nut.",
-            correctAnswer: "A mirror."
+            correctAnswer: 3
 
 
         },
@@ -75,7 +79,7 @@
             answer2: "A candle",
             answer3: "A caterpillar",
             answer4: "None of the above.",
-            correctAnswer: "A match."
+            correctAnswer: 1
         },
 
         {
@@ -85,7 +89,7 @@
             answer2: "Your paycheck.",
             answer3: "Tomorrow.",
             answer4: "The mail.",
-            correctAnswer: "Tomorrow."
+            correctAnswer: 3
         }
     ];
 
@@ -98,7 +102,7 @@
             answer2: "A secret.",
             answer3: "Talent.",
             answer4: "None of the above.",
-            correctAnswer: "A secret."
+            correctAnswer: 2
         },
         {
 
@@ -107,7 +111,7 @@
             answer2: "Your mother-in-law.",
             answer3: "An alien.",
             answer4: "A hockey team.",
-            correctAnswer: "A pair of dice."
+            correctAnswer: 1
         },
         {
 
@@ -115,8 +119,8 @@
             answer1: "Your voice.",
             answer2: "A shadow.",
             answer3: "Your code.",
-            answer4: "A chair.",
-            correctAnswer: "Your name."
+            answer4: "A name.",
+            correctAnswer: 4
         }
     ];
 
@@ -129,7 +133,7 @@
             answer2: "Children.",
             answer3: "A voice.",
             answer4: "An echo.",
-            correctAnswer: "An echo."
+            correctAnswer: 4
         },
         {
 
@@ -138,7 +142,7 @@
             answer2: "An anchor.",
             answer3: "A message in a bottle.",
             answer4: "A ship's captain.",
-            correctAnswer: "An anchor."
+            correctAnswer: 2
         },
         {
 
@@ -147,9 +151,39 @@
             answer2: "Powder.",
             answer3: "A swimmer.",
             answer4: "A tea bag.",
-            correctAnswer: "A tea bag."
+            correctAnswer: 4
         }
     ];
+
+
+    console.log(riddlesArray1);
+
+    setArray();
+    setObject();
+
+
+    function setObject() {
+        if (currentRiddleObjectNum === 1) {
+            currentRiddleObject = currentRiddleArray[0];
+        }if (currentRiddleObjectNum === 2) {
+            currentRiddleObject = currentRiddleArray[1];
+        }if (currentRiddleObjectNum === 3) {
+            currentRiddleObject = currentRiddleArray[2];
+        }
+    }
+
+
+
+
+    function setArray() {
+        if (currentRiddleArrayNum === 1) {
+            currentRiddleArray = riddlesArray1;
+        }if (currentRiddleArrayNum === 2) {
+            currentRiddleArray = riddlesArray2;
+        }if (currentRiddleArrayNum === 3) {
+            currentRiddleArray = riddlesArray3;
+        }
+    }
 
     
     
@@ -159,22 +193,131 @@
     let answer3 = document.getElementById("answer3");
     let answer4 = document.getElementById("answer4");
 
-	function displayRiddle(arr) {
-	    txtLine.innerHTML = riddlesArray1[0].riddle;
+	function displayRiddle() {
+	    txtLine.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].riddle;
 
     }
-    displayRiddle(riddlesArray1);
+    displayRiddle();
 	
-	function displayAnswers(arr) {
-	    answer1.innerHTML = riddlesArray1[0].answer1;
-	    answer2.innerHTML = riddlesArray1[0].answer2;
-	    answer3.innerHTML = riddlesArray1[0].answer3;
-	    answer4.innerHTML = riddlesArray1[0].answer4;
+	function displayAnswers() {
+	    answer1.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].answer1;
+	    answer2.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].answer2;
+	    answer3.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].answer3;
+	    answer4.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].answer4;
 
     }
-    displayAnswers(riddlesArray1);
+    displayAnswers();
+
+	document.getElementById("answer1").addEventListener('click', riddle1);
+    function riddle1(num) {
+        if (riddlesArray1[0].correctAnswer === 1) {
+            right();
+        } else {
+            wrong();
+        }
+
+    }
+    document.getElementById("answer2").addEventListener('click', riddle2);
+    function riddle2(num) {
+        if (riddlesArray1[0].correctAnswer === 2) {
+            right();
+        } else {
+            wrong();
+        }
+
+    }
+    var userInput = document.getElementById("answer3").addEventListener('click', riddle3);
+
+    function riddle3(num) {
+        console.log(num.value);
+        if (riddlesArray1[0].correctAnswer === 3) {
+            right();
+        } else {
+            wrong();
+        }
+
+    }
+    document.getElementById("answer4").addEventListener('click', riddle4);
+
+    function riddle4(num) {
+        if (riddlesArray1[0].correctAnswer === 4) {
+            rightScene();
+        } else {
+            wrongScene();
+        }
+
+    }
+
+function rightScene() {
 
 
+    document.getElementsByClassName("btn")[0].style["border-color"] = "green";
+    document.getElementsByClassName("btn")[1].style["border-color"] = "green";
+    document.getElementsByClassName("btn")[2].style["border-color"] = "green";
+    document.getElementsByClassName("btn")[3].style["border-color"] = "green";
+
+    //space bar stuff, remove event listener after done using
+
+
+
+
+
+}
+
+
+function wrongScene() {
+
+
+    document.getElementsByClassName("btn")[0].style["border-color"] = "red";
+    document.getElementsByClassName("btn")[1].style["border-color"] = "red";
+    document.getElementsByClassName("btn")[2].style["border-color"] = "red";
+    document.getElementsByClassName("btn")[3].style["border-color"] = "red";
+
+
+
+
+
+}
+
+    function right() {
+
+
+
+
+        if (currentRiddleObjectNum > 2) {
+            currentRiddleObjectNum = 1;
+            if (currentRiddleArrayNum > 2) {
+                currentRiddleArrayNum = 1;
+            } else {
+                currentRiddleArrayNum++;
+            }
+        } else {
+            currentRiddleObjectNum++;
+        }
+
+        setArray();
+        setObject();
+        displayRiddle();
+        displayAnswers();
+    }
+
+    function wrong() {
+        if (currentRiddleObjectNum > 2) {
+            currentRiddleObjectNum = 1;
+            if (currentRiddleArrayNum > 2) {
+                currentRiddleArrayNum = 1;
+            } else {
+                currentRiddleArrayNum++;
+            }
+        } else {
+            currentRiddleObjectNum++;
+        }
+
+        setArray();
+        setObject();
+        displayRiddle();
+        displayAnswers();
+    }
 </script>
 
 <!-- Bootstrap -->
