@@ -1,8 +1,7 @@
 
-/*.game-icon*
-/
-/
- */
+html, body {
+    overflow: hidden;
+}
 
 /*** Entire Page Container ***/
 #body-container{

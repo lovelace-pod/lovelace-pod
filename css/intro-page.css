@@ -17,6 +17,10 @@
     height: 67vh;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 /*** Background Image ***/
 #dark-classroom{
     object-fit: cover;
