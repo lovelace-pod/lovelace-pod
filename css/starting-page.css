@@ -1,4 +1,8 @@
 
+html, body {
+    overflow: hidden;
+}
+
 #mainContainer h1 {
     top: 45%;
     left: 39%;

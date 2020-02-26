@@ -1,9 +1,7 @@
-(function () {
-    "use strict";
-
+"use strict";
 
     setTimeout(function () {
-        var main = document.getElementById('mainContainer');
+        let main = document.getElementById('mainContainer');
         let makeKirby = document.createElement("img");
         makeKirby.setAttribute('class', "position-absolute");
         makeKirby.setAttribute('id',"Kirby");
@@ -12,15 +10,7 @@
     }, 5000);
 
     setTimeout(function () {
-        var main = document.getElementById("Kirby");
+        let main = document.getElementById("Kirby");
         main.remove();
-    },18800);
+    },19500);
 
-
-
-
-
-
-
-
-})();
