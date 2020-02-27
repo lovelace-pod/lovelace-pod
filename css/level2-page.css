@@ -1,0 +1,43 @@
+
+html, body {
+    overflow: hidden;
+}
+
+/*** Entire Page Container ***/
+#body-container{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5em;
+}
+
+.hide-me {
+    display: none;
+}
+
+/*** Picture Row ***/
+#picture{
+    height: 70vh;
+}
+
+/*** Background Image Inside House ***/
+#levelBackground {
+    object-fit: cover;
+    max-height: 100%;
+    width: 100%;
+}
+
+/* Lyonel Marching Spite */
+#lyonel {
+    top: 39px;
+    left: 600px;
+    height: 600px;
+}
+
+/*** Text Row ***/
+#text {
+    height: 20vh;
+}
+
+/*** Button Row ***/
+#button {
+height: 10vh;
+}
