@@ -14,7 +14,7 @@
 	<link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
 
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="css/intro-page.css">
+	<link rel="stylesheet" href="css/riddle-test.css">
 
 
 	<title>Lovelace Game</title>
@@ -50,7 +50,13 @@
 
 </div>
 <!------ Main Container holding Everything End -->
-
+<script src="js/jquery-2.2.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 <script>
     "use strict";
     var currentRiddleObject;
@@ -187,18 +193,18 @@
 
     
     
-    let txtLine = document.getElementById("introTextLine");
-    let answer1 = document.getElementById("answer1");
-    let answer2 = document.getElementById("answer2");
-    let answer3 = document.getElementById("answer3");
-    let answer4 = document.getElementById("answer4");
-
+    let txtLine = $("#introTextLine")[0];
+    let answer1 = $("#answer1")[0];
+    let answer2 = $("#answer2")[0];
+    let answer3 = $("#answer3")[0];
+    let answer4 = $("#answer4")[0];
+	// add riddle to page
 	function displayRiddle() {
 	    txtLine.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].riddle;
 
     }
     displayRiddle();
-	
+	// add answers to buttons
 	function displayAnswers() {
 	    answer1.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].answer1;
 	    answer2.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].answer2;
@@ -207,8 +213,8 @@
 
     }
     displayAnswers();
-
-	document.getElementById("answer1").addEventListener('click', riddle1);
+	//if the player clicks this button and it matches the correctAnswer value do...
+	answer1.addEventListener('click', riddle1);
     function riddle1(num) {
         if (riddlesArray1[0].correctAnswer === 1) {
             right();
@@ -217,7 +223,8 @@
         }
 
     }
-    document.getElementById("answer2").addEventListener('click', riddle2);
+    //if the player clicks this button and it matches the correctAnswer value do...
+    answer2.addEventListener('click', riddle2);
     function riddle2(num) {
         if (riddlesArray1[0].correctAnswer === 2) {
             right();
@@ -226,8 +233,10 @@
         }
 
     }
-    var userInput = document.getElementById("answer3").addEventListener('click', riddle3);
+    // let userInput = answer3.addEventListener('click', riddle3);
 
+    //if the player clicks this button and it matches the correctAnswer value do...
+	answer3.addEventListener('click', riddle3);
     function riddle3(num) {
         console.log(num.value);
         if (riddlesArray1[0].correctAnswer === 3) {
@@ -237,7 +246,8 @@
         }
 
     }
-    document.getElementById("answer4").addEventListener('click', riddle4);
+    //if the player clicks this button and it matches the correctAnswer value do...
+    answer4.addEventListener('click', riddle4);
 
     function riddle4(num) {
         if (riddlesArray1[0].correctAnswer === 4) {
@@ -247,7 +257,7 @@
         }
 
     }
-
+// change border color of correct answer
 function rightScene() {
 
 
@@ -256,7 +266,7 @@ function rightScene() {
     document.getElementsByClassName("btn")[2].style["border-color"] = "green";
     document.getElementsByClassName("btn")[3].style["border-color"] = "green";
 
-    //space bar stuff, remove event listener after done using
+    //replace riddle with a message prompting player to press spacebar to continue, remove event listener after done using
 
 
 
@@ -264,26 +274,19 @@ function rightScene() {
 
 }
 
-
+//change border color of wrong answer(s) to red, -0.5 from player's hp or hearts, start next riddle?
 function wrongScene() {
-
-
-    document.getElementsByClassName("btn")[0].style["border-color"] = "red";
-    document.getElementsByClassName("btn")[1].style["border-color"] = "red";
-    document.getElementsByClassName("btn")[2].style["border-color"] = "red";
-    document.getElementsByClassName("btn")[3].style["border-color"] = "red";
-
-
-
-
-
+   $(".btn").click.css("border", "1px solid red");
+    // document.getElementsByClassName("btn")[1].style["border-color"] = "red";
+    // document.getElementsByClassName("btn")[2].style["border-color"] = "red";
+    // document.getElementsByClassName("btn")[3].style["border-color"] = "red";
 }
 
     function right() {
 
 
 
-
+//
         if (currentRiddleObjectNum > 2) {
             currentRiddleObjectNum = 1;
             if (currentRiddleArrayNum > 2) {
@@ -319,16 +322,5 @@ function wrongScene() {
         displayAnswers();
     }
 </script>
-
-<!-- Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
 </body>
 </html>
