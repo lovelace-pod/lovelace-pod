@@ -1,0 +1,39 @@
+
+/*.game-icon*
+/
+/
+ */
+
+/*** Entire Page Container ***/
+#body-container{
+	font-family: 'Press Start 2P', cursive;
+	color: white;
+	background-color: black;
+	font-size: 1.5em;
+}
+
+/*** Picture Row ***/
+#picture{
+	height: 67vh;
+}
+
+html, body {
+	overflow: hidden;
+}
+
+/*** Background Image ***/
+#dark-classroom{
+	object-fit: cover;
+	max-height: 100%;
+	width: 100%;
+}
+
+/*** Text Row ***/
+#text {
+	height: 20vh;
+}
+
+/*** Button Row ***/
+#button {
+	height: 13vh;
+}
