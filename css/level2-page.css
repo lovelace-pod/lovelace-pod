@@ -32,6 +32,13 @@ html, body {
     height: 600px;
 }
 
+#body_text1{
+    position: absolute;
+    width: 400px;
+    height: auto;
+    top: 5px;
+    left: 5px;
+}
 /*** Text Row ***/
 #text {
     height: 20vh;

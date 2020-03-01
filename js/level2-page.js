@@ -50,6 +50,7 @@ $('#continue-btn').click(function () {
     let opt2 = $("#option2-btn");
     let opt3 = $("#option3-btn");
     let opt4 = $("#option4-btn");
+    let problemArea = $("#body_text1")[0];
     let problem1 = chooseFunctions[0].problem;
     //fade text and button out
     txt.empty();
@@ -66,7 +67,7 @@ $('#continue-btn').click(function () {
         opt3.fadeIn("slow");
         opt4.fadeIn("slow");
 
-        typeWriter(problem1,txtElement);
+        typeWriter(problem1,problemArea);
     }, 1000)
 });
 
