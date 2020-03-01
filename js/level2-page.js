@@ -9,9 +9,10 @@ let txtElement = $("#body_text")[0];
 //creates typewriter effect
 function typeWriter(string, element) {
     let speed = 50; /* The speed/duration of the effect in milliseconds */
-    let txt = string;
-    // let txt = "";
-    // txt += string;
+    // let txt = string;
+    let txt = "";
+    txt += string;
+    console.log(string);
     if (i < txt.length) {
         element.innerHTML += txt.charAt(i);
         i+=1;
@@ -46,13 +47,26 @@ setTimeout(function () {
 $('#continue-btn').click(function () {
     let btn = $("#continue-btn");
     let txt = $("#body_text");
-    txt.fadeOut("slow");
-    $('#lyonel').fadeIn('slow');
+    let opt2 = $("#option2-btn");
+    let opt3 = $("#option3-btn");
+    let opt4 = $("#option4-btn");
+    let problem1 = chooseFunctions[0].problem;
+    //fade text and button out
+    txt.empty();
     $(this).fadeOut("slow");
-    // after 1 seconds fadeIn problems
+    //fade enemies in
+    $('#lyonel').fadeIn('slow');
+    // after 1 seconds fade in problem text and all buttons
     setTimeout(function () {
+        //changes continue button text
         btn.text("Option 1");
-        btn.fadeIn("slow")
+        //fade in buttons
+        btn.fadeIn("slow");
+        opt2.fadeIn("slow");
+        opt3.fadeIn("slow");
+        opt4.fadeIn("slow");
+
+        typeWriter(problem1,txtElement);
     }, 1000)
 });
 
@@ -65,7 +79,7 @@ $('#lyonel').hover(function () {
 
 let chooseFunctions = [
     {
-        problem: " Which of the following functions would take two strings as arguments and returns the number of times the first string (the single character) is found in the second string.",
+        problem: "                                             Which of the following functions would take two strings as arguments and returns the number of times the first string (the single character) is found in the second string.",
         options:{
             path1:"",
             path2:"",
@@ -82,7 +96,7 @@ let chooseFunctions = [
         }
     },
     {
-        problem: "Which of the following functions would take a string and returns the word count. The string will be a sentence.",
+        problem: "                                            Which of the following functions would take a string and returns the word count. The string will be a sentence.",
         options:{
             path1:"function countWords(str) {\n" +
                 "    let array = str.split(\" \");\n" +
@@ -94,7 +108,7 @@ let chooseFunctions = [
         }
     },
     {
-        problem: "Which of the following functions would take an array with objects and returns the sum of all elements budget property. Example of an element would be: {name: \"John\",  age: 21, budget: 23000}",
+        problem: "                                           Which of the following functions would take an array with objects and returns the sum of all elements budget property. Example of an element would be: {name: \"John\",  age: 21, budget: 23000}",
         options:{
             path1:"",
             path2:"",
