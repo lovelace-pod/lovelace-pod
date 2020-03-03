@@ -21,6 +21,7 @@
     <title>Lovelace Game</title>
 </head>
 <body>
+
 <!------ Main Container holding Everything Start -->
 <div class="container-fluid m-0 vh-100" id="body-container">
 
@@ -36,8 +37,44 @@
 
     <!---------- Text Row Start -->
     <div class="row" id="text">
-        <div class="col-12 w-100 bg-secondary">
+        <!-- Story body -->
+        <div class="col-12 w-100 bg-secondary" id="TA1">
             <p class="text-wrap" id="body_text"></p>
+        </div>
+         <!-- Problem body -->
+        <div class="col-12 w-100 p-0 bg-secondary hide-me problem" id="TA2">
+            <div class="row p-0 m-0 w-100 d-flex justify-content-around">
+                <!-- Problem text area -->
+                <div class="col-12 text-center bg-secondary" id="prob_text"></div>
+
+                <!-- Function text area -->
+                <div class="col-12 text-center bg-secondary" id="func_text"></div>
+
+                <!-- Option 1 -->
+                <div  class="col-2 d-flex flex-column mt-5" id="opt1">
+                    <p class="align-self-center text-center" id="op1-text"></p>
+                    <button type="button" class="nes-btn text-center" id="btn1">A</button>
+                </div>
+
+                <!-- Option 2 -->
+                <div  class="col-2 d-flex flex-column mt-5" id="opt2">
+                    <p class="align-self-center text-center" id="op2-text"></p>
+                    <button type="button" class="nes-btn text-center" id="btn2">B</button>
+                </div>
+
+                <!-- Option 3 -->
+                <div  class="col-2 d-flex flex-column mt-5" id="opt3">
+                    <p class="align-self-center text-center" id="op3-text"></p>
+                    <button type="button" class="nes-btn text-center" id="btn3">C</button>
+                </div>
+
+                <!-- Option 4 -->
+                <div  class="col-2 d-flex flex-column mt-5" id="opt4">
+                    <p class="align-self-center text-center" id="op4-text"></p>
+                    <button type="button" class="nes-btn text-center" id="btn4">D</button>
+                </div>
+
+            </div>
         </div>
     </div>
     <!---------- Text Row End -->
@@ -45,12 +82,14 @@
     <!---------- Button Row Start -->
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
-            <button type="button" class="nes-btn mb-1 hide-me" id="continue-btn"></button>
+            <button type="button" class="nes-btn mb-1 hide-me" id="continue-btn">Continue</button>
         </div>
     </div>
     <!---------- Button Row End -->
 </div>
 <!------ Main Container holding Everything End -->
+
+<div class="gameover">GAME OVER</div>
 
 <!-- JQuery -->
 <script src="js/jquery-2.2.4.js"></script>

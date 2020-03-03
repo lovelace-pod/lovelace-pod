@@ -3,6 +3,9 @@ html, body {
     overflow: hidden;
 }
 
+body{
+    background-color: black;
+}
 /*** Entire Page Container ***/
 #body-container{
     font-family: 'Press Start 2P', cursive;
@@ -32,12 +35,31 @@ html, body {
     height: 600px;
 }
 
+#TA2 p{
+    height: auto;
+    width: 100px;
+}
 /*** Text Row ***/
 #text {
     height: 20vh;
+}
+#text .problem{
+    height: 30vh;
 }
 
 /*** Button Row ***/
 #button {
 height: 10vh;
+}
+
+/*** Game 0ver screen ***/
+.gameover{
+    display: none;
+    background-color: black;
+    height: 100vw;
+    width: 100vw;
+    text-align: center;
+    font-size: 100px;
+    padding-top: 175px;
+    color: #95999c;
 }
