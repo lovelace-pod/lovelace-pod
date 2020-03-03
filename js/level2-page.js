@@ -4,6 +4,8 @@
 let i = 0;
 let startTxt = ["Man, that guy was weird...", "I know he went this way because I can hear him.", " Wait that sounds too loud to be him..."];
 let txtElement = $("#body_text")[0];
+let currProb = 0;
+let life = 50;
 // console.log(txtElement);
 
 //creates typewriter effect
@@ -43,89 +45,95 @@ setTimeout(function () {
     btn.fadeIn("slow");
 }, 8100);
 
+// Function to add current problem content to screen
+function currentProblem(num){
+    let question = chooseFunctions[num];
+    let probArea = $("#prob_text");
+    let funcArea = $("#func_text");
+    let op1 = $("#op1-text");
+    let op2 = $("#op2-text");
+    let op3 = $("#op3-text");
+    let op4 = $("#op4-text");
+    // console.log(op3);
+    //remove any information in problem area
+    // probArea.empty();
+    // op1.empty();
+    // op2.empty();
+    // op3.empty();
+    // op4.empty();
+    setTimeout(function () {
+         //adds problem to text area
+        probArea.html(question.problem);
+        funcArea.html(question.function);
+        op1.html(question.options.path1);
+        op2.html(question.options.path2);
+        op3.html(question.options.path3);
+        op4.html(question.options.path4);
+    },1000);
+}
+
 // On click fade out btn and text and fade in enemies
 $('#continue-btn').click(function () {
     let btn = $("#continue-btn");
-    let txt = $("#body_text");
-    let opt2 = $("#option2-btn");
-    let opt3 = $("#option3-btn");
-    let opt4 = $("#option4-btn");
-    let problemArea = $("#body_text1")[0];
-    let problem1 = chooseFunctions[0].problem;
-    //fade text and button out
-    txt.empty();
-    $(this).fadeOut("slow");
+    let TA1 = $("#TA1");
+    let TA2 = $("#TA2");
+
+    //switch text and fade button out
+    TA1.fadeOut('fast');
+    $("#button").remove();
+    TA2.fadeIn('fast');
+
     //fade enemies in
     $('#lyonel').fadeIn('slow');
-    // after 1 seconds fade in problem text and all buttons
-    setTimeout(function () {
-        //changes continue button text
-        btn.text("Option 1");
-        //fade in buttons
-        btn.fadeIn("slow");
-        opt2.fadeIn("slow");
-        opt3.fadeIn("slow");
-        opt4.fadeIn("slow");
 
-        typeWriter(problem1,problemArea);
-    }, 1000)
+    // Add problem 1 info to screen
+    currentProblem(currProb);
 });
 
 // shows Lyonels attacking
-$('#lyonel').hover(function () {
-    $(this).attr("src", "img/lyonelAttack.gif")
-}, function () {
-    $(this).attr("src", "img/lyonelMarch.gif")
-});
+// $('#lyonel').hover(function () {
+//     $(this).attr("src", "img/lyonelAttack.gif")
+// }, function () {
+//     $(this).attr("src", "img/lyonelMarch.gif")
+// });
 
 let chooseFunctions = [
     {
-        problem: "                                             Which of the following functions would take two strings as arguments and returns the number of times the first string (the single character) is found in the second string.",
+        problem: "What would the following function produce:",
+        function: "function add(x:5,y:10) { return x + y }",
         options:{
-            path1:"",
-            path2:"",
-            path3:"function charCount(myChar, str) {\n" +
-                "    let total = 0;\n" +
-                "    for (let i =0; i < str.length; i++){\n" +
-                "        if (str.charAt(i) === myChar){\n" +
-                "            total += 1\n" +
-                "        }\n" +
-                "    }\n" +
-                "    return total\n" +
-                "}\n",
-            path4:""
-        }
+            path1:"5",
+            path2:"510",
+            path3:"15",
+            path4:"50"
+        },
+        Answer:3
     },
     {
-        problem: "                                            Which of the following functions would take a string and returns the word count. The string will be a sentence.",
+        problem: "What would the following function produce:",
+        function:"function valueOf(num: false) { return typeof num }",
         options:{
-            path1:"function countWords(str) {\n" +
-                "    let array = str.split(\" \");\n" +
-                "    return array.length;\n" +
-                "}",
-            path2:"",
-            path3:"",
-            path4:""
-        }
+            path1:"boolean",
+            path2:"number",
+            path3:"string",
+            path4:"object"
+        },
+        Answer:1
     },
     {
-        problem: "                                           Which of the following functions would take an array with objects and returns the sum of all elements budget property. Example of an element would be: {name: \"John\",  age: 21, budget: 23000}",
+        problem: "What would the following function produce:",
+        function:"function isEqual(x:0, y:!!false){ return x === y}",
         options:{
-            path1:"",
-            path2:"",
-            path3:"",
-            path4:"function getBudgets(array) {\n" +
-                "    let total = 0;\n" +
-                "    array.forEach(function (item) {\n" +
-                "        total += item.budget\n" +
-                "    });\n" +
-                "    return total\n" +
-                "}"
-        }
+            path1:"True",
+            path2:"undefined",
+            path3:"'False'",
+            path4:"False"
+        },
+        Answer:4
     }
     // {
-    //     objective: "",
     //     problem: "",
+    //     function: "",
     //     options:{
     //         path1:"",
     //         path2:"",
@@ -136,27 +144,55 @@ let chooseFunctions = [
     //
 ];
 
-// checks for the above problems
+// Btn values
+let userPick;
+$("#btn1").click(function () {
+    userPick = 1;
+    console.log("clicked");
+    isRight(userPick);
+    userPick = 0;
+});
+$("#btn2").click(function () {
+    userPick = 2;
+    console.log("clicked");
+    isRight(userPick);
+    userPick = 0;
+});
+$("#btn3").click(function () {
+    userPick = 3;
+    console.log("clicked");
+    isRight(userPick);
+    userPick = 0;
+});
+$("#btn4").click(function () {
+    userPick = 4;
+    console.log("clicked");
+    isRight(userPick);
+    userPick = 0;
+});
 
-// First problem
-// console.log(charCount('b', 'big fat bubble'));  //4
-// console.log(charCount('c', 'Chamber of secrets'));  //1
-// console.log(charCount('f', 'frank and his friends have offered five foxes for sale'));  //7
-// console.log(charCount('a', 'Adam and Eve bit the apple and found a snake')); //6
-// console.log(charCount('7', '10795426697'));  //2
+// Function to process user pick and determine if right answer to continue
+function isRight(userPick) {
+    if (userPick != chooseFunctions[currProb].Answer){
+        console.log("wrong");
+        $("button").attr('disabled');
+        $("#lyonel").attr("src","img/lyonelAttack.gif");
+        setTimeout(function () {
+            $("#lyonel").attr("src","img/lyonelMarch.gif");
+            $("button").removeAttr("disabled");
+        },1500);
+        life -= 3;
+        console.log(life);
+        if (life <= 0){
 
-// Second problem
-// console.log(countWords("It's high noon")); //3
-// console.log(countWords("Is this easy mode")); //4
-// console.log(countWords("What an easy task, right")); //5
-// console.log(countWords("This is a test")); //4
-// console.log(countWords("Just an example here move along")); //6
-// console.log(countWords("How are you today?")); //4
-
-// Third problem
-// console.log(getBudgets([{name: "John", age: 21, budget: 23000}, {name: "Steve", age: 32, budget: 40000}, {name: "Martin", age: 16, budget: 2700}]));  //65700
-// console.log(getBudgets([{name: "John", age: 21, budget: 29000}, {name: "Steve", age: 32, budget: 32000}, {name: "Martin", age: 16, budget: 1600}]));  //62600
-// console.log(getBudgets([{name: "John", age: 21, budget: 19401}, {name: "Steve", age: 32, budget: 12321}, {name: "Martin", age: 16, budget: 1204}]));  //32926
-// console.log(getBudgets([{name: "John", age: 21, budget: 10234}, {name: "Steve", age: 32, budget: 21754}, {name: "Martin", age: 16, budget: 4935}]));  //36923
-
-
+            $("#body-container").fadeOut(5000);
+            $(".gameover").fadeIn(5000).click(function () {
+                $("body").load('starting-page.html');
+            });
+        }
+    } else {
+        console.log("right");
+        currProb++;
+        currentProblem(currProb);
+    }
+}
