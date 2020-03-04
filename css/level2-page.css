@@ -29,7 +29,7 @@ body{
 }
 
 /* Lyonel Marching Spite */
-#lyonel {
+.first {
     top: 39px;
     left: 600px;
     height: 600px;
