@@ -6,6 +6,13 @@ let startTxt = ["Man, that guy was weird...", "I know he went this way because I
 let txtElement = $("#body_text")[0];
 let currProb = 0;
 let life = 50;
+let lyonelPattern = [
+    {attack:"img/lyonelAttack.gif",normal:"img/lyonelMarch.gif",transition:"img/lyonel2.gif"},
+    {attack:"img/lyonel2-attack.gif",normal:"img/lyonel2-march.gif",transition:"img/lyonel1.gif"},
+    {attack:"img/lyonel1-attack.gif",normal:"img/lyonel1-march.gif",transition:"img/defeat.gif"}
+];
+let lyonelLife = 0;
+
 // console.log(txtElement);
 
 //creates typewriter effect
@@ -84,7 +91,7 @@ $('#continue-btn').click(function () {
     TA2.fadeIn('fast');
 
     //fade enemies in
-    $('#lyonel').fadeIn('slow');
+    $('#lyonel').attr("src",lyonelPattern[lyonelLife].normal).fadeIn('slow');
 
     // Add problem 1 info to screen
     currentProblem(currProb);
@@ -171,27 +178,42 @@ $("#btn4").click(function () {
     userPick = 0;
 });
 
+// Function to change lyonel sprite depending on phase
+function lyonelChange() {
+    let currentState = $("#lyonel").attr("src");
+    if (currentState === lyonelPattern[0].normal){
+        currentState = lyonelPattern[0].transition;
+        return currentState;
+    } else if ( currentState === lyonelPattern[1].normal){
+        currentState = lyonelPattern[1].transition;
+        return currentState;
+    } else {
+        currentState = lyonelPattern[2].transition
+        return currentState;
+    }
+}
+
 // Function to process user pick and determine if right answer to continue
 function isRight(userPick) {
     if (userPick != chooseFunctions[currProb].Answer){
-        console.log("wrong");
+        // console.log("wrong");
         $("button").attr('disabled');
-        $("#lyonel").attr("src","img/lyonelAttack.gif");
-        setTimeout(function () {
-            $("#lyonel").attr("src","img/lyonelMarch.gif");
-            $("button").removeAttr("disabled");
-        },1500);
+        $("#lyonel").attr('src', lyonelPattern[lyonelLife].attack);
+        setTimeout(function(){$("#lyonel").attr('src',lyonelPattern[lyonelLife].normal)},1500);
         life -= 3;
-        console.log(life);
-        if (life <= 0){
+        // console.log(life);
 
+        if (life <= 0){
             $("#body-container").fadeOut(5000);
             $(".gameover").fadeIn(5000).click(function () {
                 $("body").load('starting-page.html');
             });
         }
     } else {
-        console.log("right");
+        // console.log("right");
+        lyonelLife++;
+        $("#lyonel").attr('src', lyonelPattern[lyonelLife].transition);
+        setTimeout(function(){$("#lyonel").attr('src',lyonelPattern[lyonelLife].normal)},2000);
         currProb++;
         currentProblem(currProb);
     }
