@@ -3,7 +3,7 @@
 // variables
 let i = 0;
 let startTxt = ["Man, that guy was weird...", "I know he went this way because I can hear him.", " Wait that sounds too loud to be him..."];
-let endTxt = ["Now that's over let's see where to go", "hmmm.....", "I choose that way I guess"];
+let endTxt = ["                    Now that's over let's see where to go", "hmmm.....", "I choose that way I guess"];
 let txtElement = $("#body_text")[0];
 // console.log(txtElement);
 let currProb = 0;
@@ -95,7 +95,6 @@ superTypeWriter(startTxt,txtElement);
 setTimeout(function () {
     let btn = $("#continue-btn");
     // console.log(btn);
-    btn.text("Continue");
     btn.fadeIn("slow");
 }, 8100);
 
@@ -107,9 +106,10 @@ $('#continue-btn').click(function () {
 
     //switch text and fade button out
     TA1.fadeOut('fast');
-    $("#button").remove();
+    $("#button").fadeOut('fast');
     TA2.fadeIn('fast');
-    txtElement.innerHTML = "";
+    // txtElement.innerHTML = "";
+    btn.hide();
 
     //fade enemies in
     $('#lyonel').attr("src",lyonelPattern[lyonelLife].normal).fadeIn('slow');
@@ -196,9 +196,16 @@ function isRight(userPick) {
             $("#lyonel").attr('src',lyonelPattern[lyonelLife].transition);
             setTimeout(function(){
                 $("#lyonel").fadeOut(lyonelPattern[2].time);
-                $("#TA2").fadeOut('fast');
-                $("#TA1").fadeIn('fast');
-            },15000)
+                // $("#TA2").fadeOut('fast');
+                // $("#TA1").fadeIn('fast');
+                // $("#button").fadeIn('fast');
+                // superTypeWriter(endTxt,txtElement);
+                // setTimeout(function () {
+                //     let btn = $("#continue-btn");
+                //     // console.log(btn);
+                //     btn.fadeIn("slow");
+                // }, 8100);
+            },1500)
 
         } else {
             $("#lyonel").attr('src', lyonelPattern[lyonelLife].transition);
