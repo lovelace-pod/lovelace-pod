@@ -6,6 +6,24 @@ html, body {
 body{
     background-color: black;
 }
+
+/*** Hearts ***/
+.heartDiv{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    position: absolute;
+}
+.heart {
+    z-index: 21;
+    max-height: 50px;
+    max-width: 50px;
+    height: auto;
+    width: auto;
+    margin-left:2px;
+    margin-top: 2px;
+}
+
 /*** Entire Page Container ***/
 #body-container{
     font-family: 'Press Start 2P', cursive;
