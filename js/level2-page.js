@@ -194,7 +194,7 @@ function isRight(userPick) {
             $("#body-container").fadeOut(5000);
             // lead to Wake-Up Page
             $(".gameover").fadeIn(5000).click(function () {
-                $("body").load('starting-page.html');
+                $("body").load('outro-page.html');
             });
         }
     } else {

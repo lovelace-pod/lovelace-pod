@@ -54,6 +54,20 @@
             height: 13vh;
         }
 
+        /*** Lights ***/
+        #lights{
+            background-color: white;
+            height: 100vh;
+            width: 100vw;
+        }
+        #txtLine1{
+            color: black;
+        }
+        #lights-btn{
+            height: 70px;
+            width: 150px;
+        }
+
     </style>
 
     <title>Lovelace Game</title>
@@ -61,7 +75,7 @@
 <body>
 
 <!------ Main Container holding Everything Start -->
-<div class="container-fluid m-0 vh-100" id="body-container">
+<div class="container-fluid m-0 vh-100 hide-me" id="body-container">
     <!---------- Picture Row Start -->
     <div class="row" id="picture">
         <!---------- Background Image -->
@@ -80,7 +94,7 @@
     <!---------- Button Row Start -->
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
-            <button type="button" class="nes-btn" id="continue">Continue</button>
+            <button type="button" class="nes-btn hide-me" id="continue">Continue</button>
         </div>
     </div>
     <!---------- Button Row End -->
@@ -88,6 +102,11 @@
 </div>
 <!------ Main Container holding Everything End -->
 
+<!-- Lights -->
+<div class="text-center d-flex  flex-column justify-content-center align-items-center" id="lights">
+    <p id="txtLine1"></p>
+    <button class="nes-btn hide-me" id="lights-btn">Lights?</button>
+</div>
 
 <!-- Bootstrap -->
 <script src="js/jquery-2.2.4.js"></script>
@@ -100,32 +119,55 @@
 <script>
 
     let i = 0;
-    let txt = "Lights..   ";
-    let txt1 = "Man that was bright I guess I dozed off... good thing he turned on the lights seems like people are starting to get here......."
-    let txtLine = document.getElementById("outroTextLine");
-    let btnShow = document.getElementById("continue");
+    let txt = " Lights..   ";
+    let txt1 = "              Man that was bright I guess I dozed off... good thing he turned on the lights seems like people are starting to get here.......";
+    let txtLine = $("#outroTextLine")[0];
+    let txtLine1 = $("#txtLine1")[0];
+    let btnShow = $("#continue");
     let speed = 50;
 
-    function introTypeWriter() {
+    // Typewriter function
+    function typeWriter(string, element) {
+        let speed = 50; /* The speed/duration of the effect in milliseconds */
+        // let txt = string;
+        let txt = "";
+        txt += string;
+        // console.log(string);
         if (i < txt.length) {
-            txtLine.innerHTML += txt.charAt(i);
-            i++;
-            setTimeout(introTypeWriter, speed);
+            element.innerHTML += txt.charAt(i);
+            i+=1;
+            setTimeout(function () {
+                typeWriter(string,element);
+            }, speed);
         }
     }
 
-    setTimeout(function() {
-        introTypeWriter();
-    },500);
-    setTimeout(function () {
-        btnShow.removeAttribute("style")
-    },12500);
+    typeWriter(txt,txtLine1);
 
+    setTimeout(function () {
+        $("#lights-btn").removeClass("hide-me");
+    },2000);
+
+    // When first button is clicked transition to class
+    $("#lights-btn").click(function () {
+        $("#lights").hide();
+        $("#body-container").fadeIn(3000).promise().done(function () {
+            setTimeout(function() {
+                typeWriter(txt1,txtLine);
+            },1000);
+            setTimeout(function () {
+                btnShow.removeClass("hide-me")
+            },8500);
+        });
+    });
+
+    // When Continue is clicked start over
     $("#continue").click(function () {
         $("#body-container").fadeOut(5000).promise().done(function () {
             $("body").load("starting-page.html");
         });
     })
+
 </script>
 </body>
 </html>
