@@ -40,9 +40,9 @@
     <!---------- Button Row Start -->
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
-            <a href="start-dream-page.html" style="display: none" id="startDreamBtn">
-            <button type="button" class="nes-btn">Continue</button>
-            </a>
+<!--            <a href="start-dream-page.html" style="display: none" id="startDreamBtn">-->
+            <button type="button" class="nes-btn" id="continue">Continue</button>
+<!--            </a>-->
         </div>
     </div>
     <!---------- Button Row End -->
@@ -50,6 +50,15 @@
 </div>
 <!------ Main Container holding Everything End -->
 
+
+<!-- Bootstrap -->
+<script src="js/jquery-2.2.4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 <script>
 
     let i = 0;
@@ -71,18 +80,13 @@
     },500);
     let continueBtn = setTimeout(function () {
         btnShow.removeAttribute("style")
-    },12500)
-</script>
+    },12500);
 
-<!-- Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    $("#continue").click(function () {
+        $("#body-container").fadeOut(5000).promise().done(function () {
+            $("body").load("start-dream-page.html");
+        });
+    })
+</script>
 </body>
 </html>

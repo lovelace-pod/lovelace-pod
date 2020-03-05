@@ -205,7 +205,7 @@ function isRight(userPick) {
                 //     // console.log(btn);
                 //     btn.fadeIn("slow");
                 // }, 8100);
-            },1500)
+            },1100)
 
         } else {
             $("#lyonel").attr('src', lyonelPattern[lyonelLife].transition);
