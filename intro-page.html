@@ -41,7 +41,7 @@
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
 <!--            <a href="start-dream-page.html" style="display: none" id="startDreamBtn">-->
-            <button type="button" class="nes-btn" id="continue">Continue</button>
+            <button type="button" class="nes-btn" style="display: none" id="continue">Continue</button>
 <!--            </a>-->
         </div>
     </div>
@@ -64,7 +64,7 @@
     let i = 0;
     let txt = "Looks like I'm here early. I guess that's good I get to pick where I want to sit. I still have some time so I guess that I can *yawn*. Man, I'm tired but I couldn't sleep with all my nerves. I should be fine until lunch...";
     let txtLine = document.getElementById("introTextLine");
-    let btnShow = document.getElementById("startDreamBtn");
+    let btnShow = document.getElementById("continue");
     let speed = 50;
 
     function introTypeWriter() {
@@ -75,10 +75,10 @@
         }
     }
 
-    let line2Type = setTimeout(function() {
+    setTimeout(function() {
         introTypeWriter();
     },500);
-    let continueBtn = setTimeout(function () {
+    setTimeout(function () {
         btnShow.removeAttribute("style")
     },12500);
 
