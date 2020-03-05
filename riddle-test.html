@@ -20,12 +20,19 @@
 	<title>Lovelace Game</title>
 </head>
 <body>
+<div class="heartDiv">
+	<img src="" id="heart1" class="heart">
+	<img src="" id="heart2" class="heart">
+	<img src="" id="heart3" class="heart">
+	<img src="" id="heart4" class="heart">
+	<img src="" id="heart5" class="heart">
+</div>
 <!------ Main Container holding Everything Start -->
 <div class="container-fluid m-0 vh-100" id="body-container">
 	<!---------- Picture Row Start -->
 	<div class="row" id="picture">
 		<!---------- Background Image -->
-		<img src="img/photo-of-empty-class-room-2675061.jpg" id="dark-classroom" alt="empty and dark classroom">
+		<img src="img/background-10.png" id="dark-classroom" alt="forest">
 	</div>
 	<!---------- Picture Row End -->
 
@@ -40,10 +47,10 @@
 	<!---------- Button Row Start -->
 	<div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
 		<div class="col-12 w-100 bg-secondary d-flex justify-content-around">
-			<button type="button" id="answer1" class="btn btn-outline-dark game-button-border"></button>
-			<button type="button" id="answer2" class="btn btn-outline-dark game-button-border"></button>
-			<button type="button" id="answer3" class="btn btn-outline-dark game-button-border"></button>
-			<button type="button" id="answer4" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="1" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="2" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="3" class="btn btn-outline-dark game-button-border"></button>
+			<button type="button" id="4" class="btn btn-outline-dark game-button-border"></button>
 		</div>
 	</div>
 	<!---------- Button Row End -->
@@ -125,7 +132,7 @@
             answer1: "Your voice.",
             answer2: "A shadow.",
             answer3: "Your code.",
-            answer4: "A name.",
+            answer4: "Your name.",
             correctAnswer: 4
         }
     ];
@@ -160,6 +167,7 @@
             correctAnswer: 4
         }
     ];
+    var giantArray = [riddlesArray1, riddlesArray2, riddlesArray3];
 
 
     console.log(riddlesArray1);
@@ -182,23 +190,26 @@
 
 
     function setArray() {
-        if (currentRiddleArrayNum === 1) {
-            currentRiddleArray = riddlesArray1;
-        }if (currentRiddleArrayNum === 2) {
-            currentRiddleArray = riddlesArray2;
-        }if (currentRiddleArrayNum === 3) {
-            currentRiddleArray = riddlesArray3;
-        }
+	    var randomArray = Math.floor(Math.random() * giantArray.length);
+	    currentRiddleArray = giantArray[randomArray];
+        // if (currentRiddleArrayNum === ) {
+        //     currentRiddleArray = riddlesArray1;
+        // }if (currentRiddleArrayNum === 2) {
+        //     currentRiddleArray = riddlesArray2;
+        // }if (currentRiddleArrayNum === 3) {
+        //     currentRiddleArray = riddlesArray3;
+        // }
     }
 
     
     
     let txtLine = $("#introTextLine")[0];
-    let answer1 = $("#answer1")[0];
-    let answer2 = $("#answer2")[0];
-    let answer3 = $("#answer3")[0];
-    let answer4 = $("#answer4")[0];
-	// add riddle to page
+    let answer1 = $("#1")[0];
+    let answer2 = $("#2")[0];
+    let answer3 = $("#3")[0];
+    let answer4 = $("#4")[0];
+
+    // add riddle to page
 	function displayRiddle() {
 	    txtLine.innerHTML = currentRiddleArray[currentRiddleObjectNum - 1].riddle;
 
@@ -213,7 +224,21 @@
 
     }
     displayAnswers();
-	//if the player clicks this button and it matches the correctAnswer value do...
+	//when the player clicks the button  and if it matches the correctAnswer value do...
+
+        $("button").click(function () {
+            var userButton = $(this).attr('id');
+            console.log(currentRiddleArray[currentRiddleObjectNum - 1].correctAnswer);
+            if (parseFloat(userButton) === currentRiddleArray[currentRiddleObjectNum - 1].correctAnswer) {
+                console.log("yay");
+
+            } else {
+                console.log("booo");
+                //do something else if wrong
+            }
+        });
+
+
 	answer1.addEventListener('click', riddle1);
     function riddle1(num) {
         if (riddlesArray1[0].correctAnswer === 1) {
@@ -238,7 +263,7 @@
     //if the player clicks this button and it matches the correctAnswer value do...
 	answer3.addEventListener('click', riddle3);
     function riddle3(num) {
-        console.log(num.value);
+        // console.log(num.value);
         if (riddlesArray1[0].correctAnswer === 3) {
             right();
         } else {
@@ -251,20 +276,20 @@
 
     function riddle4(num) {
         if (riddlesArray1[0].correctAnswer === 4) {
-            rightScene();
+            right();
         } else {
-            wrongScene();
+            wrong();
         }
 
     }
 // change border color of correct answer
 function rightScene() {
 
-
-    document.getElementsByClassName("btn")[0].style["border-color"] = "green";
-    document.getElementsByClassName("btn")[1].style["border-color"] = "green";
-    document.getElementsByClassName("btn")[2].style["border-color"] = "green";
-    document.getElementsByClassName("btn")[3].style["border-color"] = "green";
+	//
+    // document.getElementsByClassName("btn")[0].style["border-color"] = "green";
+    // document.getElementsByClassName("btn")[1].style["border-color"] = "green";
+    // document.getElementsByClassName("btn")[2].style["border-color"] = "green";
+    // document.getElementsByClassName("btn")[3].style["border-color"] = "green";
 
     //replace riddle with a message prompting player to press spacebar to continue, remove event listener after done using
 
@@ -276,7 +301,9 @@ function rightScene() {
 
 //change border color of wrong answer(s) to red, -0.5 from player's hp or hearts, start next riddle?
 function wrongScene() {
-   $(".btn").click.css("border", "1px solid red");
+   $(".btn").click(function () {
+		$(".btn").css("border", "1px solid red");
+   })
     // document.getElementsByClassName("btn")[1].style["border-color"] = "red";
     // document.getElementsByClassName("btn")[2].style["border-color"] = "red";
     // document.getElementsByClassName("btn")[3].style["border-color"] = "red";
@@ -284,9 +311,6 @@ function wrongScene() {
 
     function right() {
 
-
-
-//
         if (currentRiddleObjectNum > 2) {
             currentRiddleObjectNum = 1;
             if (currentRiddleArrayNum > 2) {
@@ -294,6 +318,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
+            location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;
         }
@@ -312,6 +337,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
+            location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;
         }
