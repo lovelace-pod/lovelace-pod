@@ -32,7 +32,7 @@
 	<!---------- Picture Row Start -->
 	<div class="row" id="picture">
 		<!---------- Background Image -->
-		<img src="img/background-10.png" id="dark-classroom" alt="forest">
+		<img src="img/background-10.png" id="forest" alt="forest">
 		<img src="img/Wizrobe.gif" id="wizzrobe" alt="wizzrobe sprite" class="position-absolute hide-me first">
 	</div>
 	<!---------- Picture Row End -->
@@ -193,13 +193,7 @@
     function setArray() {
 	    var randomArray = Math.floor(Math.random() * giantArray.length);
 	    currentRiddleArray = giantArray[randomArray];
-        // if (currentRiddleArrayNum === ) {
-        //     currentRiddleArray = riddlesArray1;
-        // }if (currentRiddleArrayNum === 2) {
-        //     currentRiddleArray = riddlesArray2;
-        // }if (currentRiddleArrayNum === 3) {
-        //     currentRiddleArray = riddlesArray3;
-        // }
+
     }
 
     
@@ -259,7 +253,7 @@
         }
 
     }
-    // let userInput = answer3.addEventListener('click', riddle3);
+
 
     //if the player clicks this button and it matches the correctAnswer value do...
 	answer3.addEventListener('click', riddle3);
@@ -286,17 +280,7 @@
 // change border color of correct answer
 function rightScene() {
 
-	//
-    // document.getElementsByClassName("btn")[0].style["border-color"] = "green";
-    // document.getElementsByClassName("btn")[1].style["border-color"] = "green";
-    // document.getElementsByClassName("btn")[2].style["border-color"] = "green";
-    // document.getElementsByClassName("btn")[3].style["border-color"] = "green";
-
     //replace riddle with a message prompting player to press spacebar to continue, remove event listener after done using
-
-
-
-
 
 }
 
@@ -305,9 +289,7 @@ function wrongScene() {
    $(".btn").click(function () {
 		$(".btn").css("border", "1px solid red");
    })
-    // document.getElementsByClassName("btn")[1].style["border-color"] = "red";
-    // document.getElementsByClassName("btn")[2].style["border-color"] = "red";
-    // document.getElementsByClassName("btn")[3].style["border-color"] = "red";
+
 }
 
     function right() {
@@ -319,7 +301,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
-            heartEnd();
+
             location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;
@@ -332,8 +314,7 @@ function wrongScene() {
     }
 
     function wrong() {
-        yourHP--;
-        hearts(yourHP);
+
         if (currentRiddleObjectNum > 2) {
             currentRiddleObjectNum = 1;
             if (currentRiddleArrayNum > 2) {
@@ -341,7 +322,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
-            heartEnd();
+
             location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;

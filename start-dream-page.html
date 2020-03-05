@@ -32,7 +32,8 @@
     <!---------- Text Row Start -->
     <div class="row" id="text">
         <div class="col-12 w-100 bg-secondary">
-            <p class="text-center text-wrap">Life finds a way. So you two dig up, dig up dinosaurs? Remind me to thank John for a lovely weekend. God help us, we're in the hands of engineers. So you two dig up, dig up dinosaurs? Do you have any idea how long it takes those cups to decompose. Life finds a way.</p>
+            <p id= "dialogue1" class="text-center text-wrap mt-3"></p>
+
         </div>
     </div>
     <!---------- Text Row End -->
@@ -41,7 +42,7 @@
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
             <a href="riddle-test.html">
-            <button type="button" class="nes-btn">Continue</button>
+            <button type="button" id="next" class="nes-btn">Continue</button>
             </a>
         </div>
     </div>
@@ -63,7 +64,26 @@
         crossorigin="anonymous"></script>
 <script>
     "use strict";
-    var kittyCat = "Welcome to The Lost Woods! I’ve been pawtiently awaiting the arrival of the hero who will wield the Sword that Seals the Darkness, and defeat **bosses name**!  Ever since I was a kitten, I have heard tails of your bravery.  The sword is deep within these woods, and meowny evil creatures lurk within, but I believe you will emerge victorious.  Good luck, hero!";
+
+    let kittyCat = "Welcome to The Lost Woods! I’ve been pawtiently awaiting the arrival of the hero who will wield the Sword that Seals the Darkness, and defeat **bosses name**! Ever since I was a kitten, I have heard tails of your bravery.  The sword is deep within these woods, and meowny evil creatures large and small lurk within.  Good luck, hero!";
+    let i = 0;
+    let kittyCatLine = $("#dialogue1")[0];
+    let kittyButton = $("#next");
+
+    function typeWriter(string, element) {
+        let speed = 50; /* The speed/duration of the effect in milliseconds */
+        let kittyCat = "";
+        kittyCat += string;
+        if (i < kittyCat.length) {
+            element.innerHTML += kittyCat.charAt(i);
+            i+=1;
+            setTimeout(function () {
+                typeWriter(string,element);
+            }, speed);
+        }
+    }
+    typeWriter(kittyCat, kittyCatLine);
+
 </script>
 </body>
 </html>
