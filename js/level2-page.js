@@ -3,8 +3,10 @@
 // variables
 let i = 0;
 let startTxt = ["Man, that guy was weird...", "I know he went this way because I can hear him.", " Wait that sounds too loud to be him..."];
-let endTxt = ["                    Now that's over let's see where to go", "hmmm.....", "I choose that way I guess"];
+let endTxt = ["                    Now that's over let's see where to go","",""];
+let endTxt1 = "                                    I'll choose that way I guess";
 let txtElement = $("#body_text")[0];
+let txtElement1 = $("#body_text1")[0];
 // console.log(txtElement);
 let currProb = 0;
 let lyonelAttack = 3;
@@ -106,10 +108,9 @@ $('#continue-btn').click(function () {
 
     //switch text and fade button out
     TA1.fadeOut('fast');
-    $("#button").fadeOut('fast');
+    $("#button").remove();
     TA2.fadeIn('fast');
-    // txtElement.innerHTML = "";
-    btn.hide();
+    txtElement.innerHTML = "";
 
     //fade enemies in
     $('#lyonel').attr("src",lyonelPattern[lyonelLife].normal).fadeIn('slow');
@@ -177,43 +178,65 @@ function isRight(userPick) {
     if (userPick !== chooseFunctions[currProb].Answer){
         // console.log("wrong");
         $("button").attr('disabled');
+        // Show attack gif
         $("#lyonel").attr('src', lyonelPattern[lyonelLife].attack);
+        // Switch back to normal gif
         setTimeout(function(){$("#lyonel").attr('src',lyonelPattern[lyonelLife].normal)},1500);
+        // Reduce life according to number of enemies
+        // yourHP -= lyonelAttack;
+        // hearts(yourHP);
         life -= lyonelAttack;
         // console.log(life);
 
          // check if game over
         if (life <= 0){
+            // Fade out screen
             $("#body-container").fadeOut(5000);
+            // lead to Wake-Up Page
             $(".gameover").fadeIn(5000).click(function () {
                 $("body").load('starting-page.html');
             });
         }
     } else {
         // console.log("right");
+
         //check to see if lyonel is defeated
         if (lyonelLife === 2){
+            // Show defeat animation
             $("#lyonel").attr('src',lyonelPattern[lyonelLife].transition);
+            // Transition back to story
             setTimeout(function(){
                 $("#lyonel").fadeOut(lyonelPattern[2].time);
-                // $("#TA2").fadeOut('fast');
-                // $("#TA1").fadeIn('fast');
-                // $("#button").fadeIn('fast');
-                // superTypeWriter(endTxt,txtElement);
-                // setTimeout(function () {
-                //     let btn = $("#continue-btn");
-                //     // console.log(btn);
-                //     btn.fadeIn("slow");
-                // }, 8100);
+                $("#TA2").fadeOut('fast');
+                $("#TA1").fadeIn('fast');
+                $("#body-container").append("<div class=\"row d-flex justify-content-center p-3 bg-secondary\" id=\"button\">" +
+                    "<div class=\"col-12 w-100 bg-secondary d-flex justify-content-around\">" +
+                    "</div>" + "</div>");
+                superTypeWriter(endTxt,txtElement);
+                setTimeout(function () {
+                    typeWriter(endTxt1,txtElement1);
+                },3000);
+                setTimeout(function () {
+                    // heartEnd();
+                    $("#button div").append('<button type="button" class="nes-btn mb-1 hide-me" id="continue-btn">Continue</button>');
+                    let btn = $("#continue-btn");
+                    // console.log(btn);
+                    btn.fadeIn("slow");
+                }, 6000);
             },1100)
 
         } else {
+            // Show defeat a enemy and reduce number
             $("#lyonel").attr('src', lyonelPattern[lyonelLife].transition);
             setTimeout(function(){
+                //Switch gifs used
                 lyonelLife++;
+                // reduce attack power
                 lyonelAttack--;
                 $("#lyonel").attr('src',lyonelPattern[lyonelLife].normal)},lyonelPattern[lyonelLife].time);
+            // Switch problems
             currProb++;
+            // Add new problems
             currentProblem(currProb);
         }
     }
