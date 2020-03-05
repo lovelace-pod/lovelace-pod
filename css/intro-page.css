@@ -1,10 +1,9 @@
 
-/*.game-icon*
-/
-/
- */
-
+html, body {
+    overflow: hidden;
+}
 /*** Entire Page Container ***/
+
 #body-container{
     font-family: 'Press Start 2P', cursive;
     color: white;
@@ -13,12 +12,9 @@
 }
 
 /*** Picture Row ***/
+
 #picture{
     height: 67vh;
-}
-
-html, body {
-    overflow: hidden;
 }
 
 /*** Background Image ***/

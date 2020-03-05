@@ -14,12 +14,52 @@
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/intro-page.css">
+    <style>
 
+        html, body {
+            overflow: hidden;
+        }
+        /*** Entire Page Container ***/
+
+        #body-container{
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            background-color: black;
+            font-size: 1.5em;
+        }
+        .hide-me{
+            display: none;
+        }
+
+        /*** Picture Row ***/
+
+        #picture{
+            height: 67vh;
+        }
+
+        /*** Background Image ***/
+        #dark-classroom{
+            object-fit: cover;
+            max-height: 100%;
+            width: 100%;
+        }
+
+        /*** Text Row ***/
+        #text {
+            height: 20vh;
+        }
+
+        /*** Button Row ***/
+        #button {
+            height: 13vh;
+        }
+
+    </style>
 
     <title>Lovelace Game</title>
 </head>
 <body>
+
 <!------ Main Container holding Everything Start -->
 <div class="container-fluid m-0 vh-100" id="body-container">
     <!---------- Picture Row Start -->
@@ -32,7 +72,7 @@
     <!---------- Text Row Start -->
     <div class="row" id="text">
         <div class="col-12 w-100 bg-secondary">
-            <p class="text-wrap mt-3" id="introTextLine"></p>
+            <p class="text-wrap mt-3" id="outroTextLine"></p>
         </div>
     </div>
     <!---------- Text Row End -->
@@ -40,9 +80,7 @@
     <!---------- Button Row Start -->
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
-<!--            <a href="start-dream-page.html" style="display: none" id="startDreamBtn">-->
-            <button type="button" class="nes-btn" style="display: none" id="continue">Continue</button>
-<!--            </a>-->
+            <button type="button" class="nes-btn" id="continue">Continue</button>
         </div>
     </div>
     <!---------- Button Row End -->
@@ -62,8 +100,9 @@
 <script>
 
     let i = 0;
-    let txt = "Looks like I'm here early. I guess that's good I get to pick where I want to sit. I still have some time so I guess that I can *yawn*. Man, I'm tired but I couldn't sleep with all my nerves. I should be fine until lunch...";
-    let txtLine = document.getElementById("introTextLine");
+    let txt = "Lights..   ";
+    let txt1 = "Man that was bright I guess I dozed off... good thing he turned on the lights seems like people are starting to get here......."
+    let txtLine = document.getElementById("outroTextLine");
     let btnShow = document.getElementById("continue");
     let speed = 50;
 
@@ -84,7 +123,7 @@
 
     $("#continue").click(function () {
         $("#body-container").fadeOut(5000).promise().done(function () {
-            $("body").load("start-dream-page.html");
+            $("body").load("starting-page.html");
         });
     })
 </script>
