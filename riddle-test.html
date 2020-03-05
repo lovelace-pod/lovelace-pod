@@ -90,8 +90,8 @@
 
             riddle: "Pick me up and scratch my head. I’ll turn red and then black. What am I?",
             answer1: "A match.",
-            answer2: "A candle",
-            answer3: "A caterpillar",
+            answer2: "A candle.",
+            answer3: "A caterpillar.",
             answer4: "None of the above.",
             correctAnswer: 1
         },
@@ -131,7 +131,7 @@
 
             riddle: "This belongs to you, but everyone else uses it. ",
             answer1: "Your voice.",
-            answer2: "A shadow.",
+            answer2: "Your shadow.",
             answer3: "Your code.",
             answer4: "Your name.",
             correctAnswer: 4
@@ -319,6 +319,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
+            heartEnd();
             location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;
@@ -331,6 +332,8 @@ function wrongScene() {
     }
 
     function wrong() {
+        yourHP--;
+        hearts(yourHP);
         if (currentRiddleObjectNum > 2) {
             currentRiddleObjectNum = 1;
             if (currentRiddleArrayNum > 2) {
@@ -338,6 +341,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
+            heartEnd();
             location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;
