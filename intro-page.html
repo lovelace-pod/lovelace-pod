@@ -61,16 +61,16 @@
         crossorigin="anonymous"></script>
 <script>
 
-    let i = 0;
+    let l = 0;
     let txt = "Looks like I'm here early. I guess that's good I get to pick where I want to sit. I still have some time so I guess that I can *yawn*. Man, I'm tired but I couldn't sleep with all my nerves. I should be fine until lunch...";
     let txtLine = document.getElementById("introTextLine");
     let btnShow = document.getElementById("continue");
     let speed = 50;
 
     function introTypeWriter() {
-        if (i < txt.length) {
-            txtLine.innerHTML += txt.charAt(i);
-            i++;
+        if (l < txt.length) {
+            txtLine.innerHTML += txt.charAt(l);
+            l++;
             setTimeout(introTypeWriter, speed);
         }
     }
