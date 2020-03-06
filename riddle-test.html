@@ -59,6 +59,7 @@
 </div>
 <!------ Main Container holding Everything End -->
 <script src="js/jquery-2.2.4.js"></script>
+<script src="js/hearts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -69,8 +70,25 @@
     "use strict";
     var currentRiddleObject;
     var currentRiddleArray = [];
-    var currentRiddleObjectNum = 1;
-    var currentRiddleArrayNum = 1;
+    var currentRiddleObjectNum = Math.floor(Math.random() * 3) + 1;
+    var currentRiddleArrayNum = Math.floor(Math.random() * 3) + 1;
+    var questionCount = 0;
+
+    // setArray();
+    // setObject();
+
+    // currentRiddleArray = giantArray[randomArray];
+
+    function setArray() {
+        if (currentRiddleArrayNum === 1) {
+            currentRiddleArray = riddlesArray1;
+        }if (currentRiddleArrayNum === 2) {
+            currentRiddleArray = riddlesArray2;
+        }if (currentRiddleArrayNum === 3) {
+            currentRiddleArray = riddlesArray3;
+        }
+
+    }
 
 
     // Array of Objects with Riddles
@@ -190,11 +208,7 @@
 
 
 
-    function setArray() {
-	    var randomArray = Math.floor(Math.random() * giantArray.length);
-	    currentRiddleArray = giantArray[randomArray];
 
-    }
 
     
     
@@ -236,7 +250,7 @@
 
 	answer1.addEventListener('click', riddle1);
     function riddle1(num) {
-        if (riddlesArray1[0].correctAnswer === 1) {
+        if (currentRiddleArray[currentRiddleObjectNum - 1].correctAnswer === 1) {
             right();
         } else {
             wrong();
@@ -246,7 +260,7 @@
     //if the player clicks this button and it matches the correctAnswer value do...
     answer2.addEventListener('click', riddle2);
     function riddle2(num) {
-        if (riddlesArray1[0].correctAnswer === 2) {
+        if (currentRiddleArray[currentRiddleObjectNum - 1].correctAnswer === 2) {
             right();
         } else {
             wrong();
@@ -259,7 +273,7 @@
 	answer3.addEventListener('click', riddle3);
     function riddle3(num) {
         // console.log(num.value);
-        if (riddlesArray1[0].correctAnswer === 3) {
+        if (currentRiddleArray[currentRiddleObjectNum - 1].correctAnswer === 3) {
             right();
         } else {
             wrong();
@@ -270,7 +284,7 @@
     answer4.addEventListener('click', riddle4);
 
     function riddle4(num) {
-        if (riddlesArray1[0].correctAnswer === 4) {
+        if (currentRiddleArray[currentRiddleObjectNum - 1].correctAnswer === 4) {
             right();
         } else {
             wrong();
@@ -293,7 +307,12 @@ function wrongScene() {
 }
 
     function right() {
-
+        questionCount++;
+        if (questionCount === 3){
+            heartEnd();
+            location.replace("level2-page.html");
+        }
+        console.log('right function');
         if (currentRiddleObjectNum > 2) {
             currentRiddleObjectNum = 1;
             if (currentRiddleArrayNum > 2) {
@@ -301,8 +320,7 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
-
-            location.replace("level2-page.html");
+            heartEnd();
         } else {
             currentRiddleObjectNum++;
         }
@@ -314,7 +332,13 @@ function wrongScene() {
     }
 
     function wrong() {
+        questionCount++;
+        if (questionCount === 3){
+            heartEnd();
+            location.replace("level2-page.html");
+        }
 
+        console.log("wrong function");
         if (currentRiddleObjectNum > 2) {
             currentRiddleObjectNum = 1;
             if (currentRiddleArrayNum > 2) {
@@ -322,17 +346,34 @@ function wrongScene() {
             } else {
                 currentRiddleArrayNum++;
             }
+            heartEnd();
 
-            location.replace("level2-page.html");
         } else {
             currentRiddleObjectNum++;
-        }
 
+        }
+        yourHP--;
+        hearts(yourHP);
         setArray();
         setObject();
         displayRiddle();
         displayAnswers();
     }
+    var dkonamiCount = 0;
+    var dkonami = ['ArrowUp', 'ArrowLeft', 'ArrowRight', 'ArrowDown'];
+    $(document).keyup(function (event) {
+        if (event.key === dkonami[dkonamiCount] && dkonamiCount + 1 === dkonami.length || event.key !== dkonami[dkonamiCount]) {
+            if (dkonamiCount + 1 === dkonami.length){
+                yourHP=10;
+                maxHP = 10;
+                heartEnd();
+                maxhpset();
+            }
+            dkonamiCount = 0;
+        } else {
+            dkonamiCount++;
+        }
+    });
 </script>
 </body>
 </html>
