@@ -11,7 +11,7 @@ let txtElement1 = $("#body_text1")[0];
 let currProb = 0;
 let lyonelAttack = 3;
 let lyonelLife = 0;
-let life = 50;
+// let life = 50;
 let chooseFunctions = [
     {
         problem: "What would the following function produce:",
@@ -183,13 +183,14 @@ function isRight(userPick) {
         // Switch back to normal gif
         setTimeout(function(){$("#lyonel").attr('src',lyonelPattern[lyonelLife].normal)},1500);
         // Reduce life according to number of enemies
-        // yourHP -= lyonelAttack;
-        // hearts(yourHP);
-        life -= lyonelAttack;
+        for (let i = 1;i<=lyonelAttack;i++){
+            yourHP--;
+            hearts(yourHP);
+        }
         // console.log(life);
 
          // check if game over
-        if (life <= 0){
+        if (yourHP <= 0){
             // Fade out screen
             $("#body-container").fadeOut(5000);
             // lead to Wake-Up Page
@@ -217,7 +218,7 @@ function isRight(userPick) {
                     typeWriter(endTxt1,txtElement1);
                 },3000);
                 setTimeout(function () {
-                    // heartEnd();
+                    heartEnd();
                     $("#button div").append('<a type="button" class="nes-btn mb-1 hide-me" id="next-btn" href="../simon.html">Continue</a>');
                     let btn = $("#next-btn");
                     // console.log(btn);
