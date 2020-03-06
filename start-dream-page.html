@@ -42,7 +42,7 @@
     <div class="row d-flex justify-content-center p-3 bg-secondary" id="button">
         <div class="col-12 w-100 bg-secondary d-flex justify-content-around">
             <a href="riddle-test.html">
-            <button type="button" id="next" class="nes-btn">Continue</button>
+            <button type="button" id="next" class="nes-btn hide-me">Continue</button>
             </a>
         </div>
     </div>
@@ -83,6 +83,10 @@
         }
     }
     typeWriter(kittyCat, kittyCatLine);
+
+    setTimeout(function () {
+        $("#next").removeClass("hide-me")
+    },18000)
 
 </script>
 </body>

@@ -3,6 +3,9 @@ html, body {
     overflow: hidden;
 }
 
+.hide-me{
+    display: none;
+}
 /*** Entire Page Container ***/
 #body-container{
     font-family: 'Press Start 2P', cursive;
@@ -23,10 +26,10 @@ html, body {
 
 /*** Text Row ***/
 #text {
-    height: 10vh;
+    height: 30vh;
 }
 
 /*** Button Row ***/
 #button {
-    height: 20vh;
+    height: 10vh;
 }
