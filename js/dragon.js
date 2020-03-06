@@ -22,13 +22,16 @@ var chargeOn = 0;
 ballPos = 0;
 var dkonamiCount = 0;
 var dkonami = ['ArrowUp', 'ArrowLeft', 'ArrowRight', 'ArrowDown'];
+var hardMode = 0;
 
 $(document).keyup(function (event) {
     if (event.key === '\\') {
-        dragonHP = 8;
+        dragonHP = 6;
+        hardMode = 1;
+        bdelay3 = 300;
     }
     if (event.key === dkonami[dkonamiCount] && dkonamiCount + 1 === dkonami.length || event.key !== dkonami[dkonamiCount]) {
-        if (dkonamiCount + 1 === dkonami.length) {
+        if (dkonamiCount + 1 === dkonami.length && hardMode === 0) {
             yourHP = 10;
             maxHP = 10;
             heartEnd();

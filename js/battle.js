@@ -20,7 +20,7 @@ document.getElementById('startBut').addEventListener('click', adds);
 
 
 function dragonHit() {
-    if (dragonHP === 2) {
+    if (dragonHP === 2 && hardMode === 0) {
         bdelay3 = 3000;
     }
 
