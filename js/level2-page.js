@@ -242,3 +242,20 @@ function isRight(userPick) {
         }
     }
 }
+
+// Code
+var dkonamiCount = 0;
+var dkonami = ['ArrowUp', 'ArrowLeft', 'ArrowRight', 'ArrowDown'];
+$(document).keyup(function (event) {
+    if (event.key === dkonami[dkonamiCount] && dkonamiCount + 1 === dkonami.length || event.key !== dkonami[dkonamiCount]) {
+        if (dkonamiCount + 1 === dkonami.length){
+            yourHP=10;
+            maxHP = 10;
+            heartEnd();
+            maxhpset();
+        }
+        dkonamiCount = 0;
+    } else {
+        dkonamiCount++;
+    }
+});
