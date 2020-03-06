@@ -219,7 +219,7 @@ function isRight(userPick) {
                 },3000);
                 setTimeout(function () {
                     heartEnd();
-                    $("#button div").append('<a type="button" class="nes-btn mb-1 hide-me" id="next-btn" href="../simon.html">Continue</a>');
+                    $("#button div").append('<a type="button" class="nes-btn mb-1 hide-me" id="next-btn" href="simon.html">Continue</a>');
                     let btn = $("#next-btn");
                     // console.log(btn);
                     btn.fadeIn("slow");

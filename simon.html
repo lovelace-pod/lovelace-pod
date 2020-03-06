@@ -20,6 +20,10 @@
             overflow: hidden;
         }
 
+        .hide-me{
+            display: none;
+        }
+
         #mainContainer h1 {
             top: 45%;
             left: 39%;
@@ -57,7 +61,7 @@
             z-index: 20;
             /*display: inline-block;*/
             left: -12em;
-            top: -17em;
+            top: -4em;
             align-self: center;
             position: relative;
         }
@@ -67,7 +71,7 @@
             z-index: 20;
             /*display: inline-block;*/
             left: -5em;
-            top: -17em;
+            top: -4em;
             align-self: center;
             position: relative;
         }
@@ -77,7 +81,7 @@
             z-index: 20;
             /*display: inline-block;*/
             left: -5em;
-            top: -17em;
+            top: -4em;
             align-self: center;
             position: relative;
         }
@@ -128,6 +132,11 @@
 
         }
 
+        #fight-btn{
+            top: 591px;
+            left: 49em;
+        }
+
 
     </style>
 </head>
@@ -154,11 +163,7 @@
 
     <img src="img/background-10.png" alt="" id="background-image" class="m-0 p-0 h-100 w-100">
     <!--    <a class="nes-btn mx-auto px-3 position-absolute" href="lead-in-page.html">Start</a>-->
-    <div class="row" id="text">
-        <div class="col-12 w-100 bg-secondary" style="height: 150px">
-            <p class="text-wrap" id="body_text"></p>
-        </div>
-    </div>
+    <button class="nes-btn mb-1 hide-me position-absolute" id="fight-btn">FIGHT!!</button>
 </div>
 
 
@@ -201,6 +206,11 @@
             $('#stone').attr('src', '');
             $('#stone').attr('src', 'img/headstart.gif');
             $('#stone').removeClass('stone2').addClass('stone3');
+            setTimeout(function () {
+                $("#fight-btn").removeClass("hide-me").click(function () {
+                    location.replace("battle.html");
+                })
+            },1000)
 
         });
 
