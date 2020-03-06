@@ -13,14 +13,13 @@
     <!-- Player 2 font -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <title>Home Version</title>
     <style>
 
         html, body {
             overflow: hidden;
         }
 
-        .hide-me{
+        .hide-me {
             display: none;
         }
 
@@ -38,28 +37,8 @@
             justify-content: center;
         }
 
-        /*#Kirby {*/
-        /*    height: 150px;*/
-        /*    bottom: 7%;*/
-        /*    left: 110%;*/
-        /*    z-index: 1;*/
-        /*    animation: kirby-walk 15s 1;*/
-        /*    animation-timing-function: linear;*/
-        /*}*/
-
-        /*@keyframes kirby-walk {*/
-        /*    from {*/
-        /*        left: -110%*/
-        /*    }*/
-        /*    to {*/
-        /*        left: 110%*/
-        /*    }*/
-        /*}*/
-
         .stone {
-            /*position: absolute;*/
             z-index: 20;
-            /*display: inline-block;*/
             left: -12em;
             top: -4em;
             align-self: center;
@@ -67,9 +46,7 @@
         }
 
         .stone2 {
-            /*position: absolute;*/
             z-index: 20;
-            /*display: inline-block;*/
             left: -5em;
             top: -4em;
             align-self: center;
@@ -87,9 +64,7 @@
         }
 
         .stone3 {
-            /*position: absolute;*/
             z-index: 20;
-            /*display: inline-block;*/
             left: -15em;
             top: -10em;
             align-self: center;
@@ -97,9 +72,7 @@
         }
 
         #glow {
-            /*position: absolute;*/
             z-index: 20;
-            /*display: inline-block;*/
             left: -12em;
             top: -17em;
             align-self: center;
@@ -111,10 +84,9 @@
             width: 0em;
             position: absolute;
             align-self: center;
-
         }
 
-        .heartDiv{
+        .heartDiv {
             display: flex;
             justify-content: flex-start;
             width: 100%;
@@ -127,16 +99,15 @@
             max-width: 50px;
             height: auto;
             width: auto;
-            margin-left:2px;
+            margin-left: 2px;
             margin-top: 2px;
 
         }
 
-        #fight-btn{
+        #fight-btn {
             top: 50em;
             left: 36em;
         }
-
 
     </style>
 </head>
@@ -147,10 +118,7 @@
     <img src="" id="heart3" class="heart">
     <img src="" id="heart4" class="heart">
     <img src="" id="heart5" class="heart">
-
-
 </div>
-
 
 <!------ Main container-->
 <div class="container-fluid d-flex justify-content-center align-content-center flex-column m-0 p-0 position-relative vh-100 vw-100"
@@ -166,32 +134,14 @@
     <button class="nes-btn mb-1 hide-me position-absolute" id="fight-btn">Fight Anutrof!!</button>
 </div>
 
-
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery-2.2.4.js"></script>
 <script src="js/hearts.js"></script>
 <script>
+
     var maintrack = new Audio("sound/Power - AShamaluevMusic.mp3");
-
     var blast = new Audio("sound/Grenade-SoundBible.com-2124844747.mp3");
-
-    //
     var ping = new Audio("sound/pin_dropping-Brian_Rocca-2084700791.mp3");
-
-    // var konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
-    //
-    // var konamiCount = 0;
-    //
-    // $(document).keyup(function (event) {
-    //     if (event.key === konami[konamiCount] && konamiCount + 1 === konami.length || event.key !== konami[konamiCount]) {
-    //         konamiCount + 1 === konami.length ? $('#pic').attr('src', 'img/bazooka.jpg') : false;
-    //         konamiCount = 0;
-    //     } else {
-    //         konamiCount++;
-    //     }
-    // });
-
     var konami = [];
     var konamiCount = 0;
     var pattern = 1;
@@ -201,6 +151,8 @@
         $('#stone').removeClass('stone').addClass('stone2');
         $('#stone').attr('src', 'img/glow.gif');
         blast.play();
+        yourHP = 10;
+        maxhpset();
         $('#stone').click(function () {
             maintrack.play();
             $('#stone').attr('src', '');
@@ -208,35 +160,19 @@
             $('#stone').removeClass('stone2').addClass('stone3');
             setTimeout(function () {
                 $("#fight-btn").removeClass("hide-me").click(function () {
+                    heartEnd();
                     location.replace("battle.html");
                 })
-            },1000)
-
+            }, 1000)
         });
-
     }
 
     function code(pat) {
-        console.log('hi from code' + pat);
-
         $(document).keyup(function (event) {
-
-
-            // if (event.key === konami[konamiCount] && konamiCount + 1 === konami.length || event.key !== konami[konamiCount]) {
-            //     konamiCount + 1 === konami.length ? $('#pic').attr('src', 'img/bazooka.jpg') : false;
-            //     konamiCount = 0;
-            // } else {
-            //     konamiCount++;
-            // }
-
             if (event.key === konami[konamiCount]) {
-                console.log('success');
             }
-
             if (event.key === konami[konamiCount]) {
                 if (konamiCount + 1 === konami.length) {
-
-
                     $('#stone').attr('src', 'img/stonecomplete.png');
                     konamiCount = 0;
                     if (pat === 1) {
@@ -246,7 +182,6 @@
                             $(document).unbind();
                             pattern2();
                         }, 2000);
-
                     } else if (pat === 2) {
                         setTimeout(function () {
                             pattern++;
@@ -256,7 +191,6 @@
                         }, 2000);
                     } else if (pat === 3) {
                         $(document).unbind();
-                        console.log('done');
                         final();
                     }
                 } else {
@@ -272,13 +206,10 @@
                     konamiCount++;
                 }
             } else {
-                console.log(pat);
                 $('#stone').attr('src', 'img/swordinstone.png');
                 konamiCount = 0;
                 $(document).unbind();
-                console.log(event.key);
-                console.log(konami[konamiCount]);
-                if (pat === 1){
+                if (pat === 1) {
                     yourHP--;
                     hearts(yourHP);
                     $('#stone').attr('src', 'img/swordinstone.png');
@@ -286,8 +217,7 @@
                     setTimeout(function () {
                         pattern1();
                     }, 1000);
-
-                } else if (pat === 2){
+                } else if (pat === 2) {
                     yourHP--;
                     hearts(yourHP);
                     $('#stone').attr('src', 'img/swordinstone.png');
@@ -296,7 +226,7 @@
 
                         pattern2();
                     }, 1000);
-                } else if (pat === 3){
+                } else if (pat === 3) {
                     yourHP--;
                     hearts(yourHP);
                     $('#stone').attr('src', 'img/swordinstone.png');
@@ -311,22 +241,18 @@
     }
 
     function pattern1() {
-        // pattern = 1;
         konamiCount = 0;
         konami = ['ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
 
-        function pattern1Pat (){
-            if (konamiCount > konami.length - 1){
+        function pattern1Pat() {
+            if (konamiCount > konami.length - 1) {
                 $('#stone').attr('src', 'img/swordinstone.png');
                 konamiCount = 0;
-
                 code(pattern);
                 clearInterval(set1);
-
             } else {
                 ping.currentTime = 0;
                 ping.play();
-                // charge.pause();
 
                 if (konami[konamiCount] === 'ArrowUp') {
                     $('#stone').attr('src', 'img/goldtop.png');
@@ -342,26 +268,22 @@
         }
 
         var set1 = setInterval(pattern1Pat, 500);
-
-
     }
 
     function pattern2() {
-        // pattern = 2;
         konamiCount = 0;
         konami = ['ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowUp', 'ArrowRight'];
-        function pattern2Pat (){
-            if (konamiCount > konami.length - 1){
+
+        function pattern2Pat() {
+            if (konamiCount > konami.length - 1) {
                 $('#stone').attr('src', 'img/swordinstone.png');
                 konamiCount = 0;
-
                 code(pattern);
                 clearInterval(set2);
 
             } else {
                 ping.currentTime = 0;
                 ping.play();
-                // charge.pause();
 
                 if (konami[konamiCount] === 'ArrowUp') {
                     $('#stone').attr('src', 'img/goldtop.png');
@@ -380,22 +302,18 @@
     }
 
     function pattern3() {
-        // pattern = 3;
         konamiCount = 0;
         konami = ['ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'ArrowUp'];
 
-        function pattern3Pat (){
-            if (konamiCount > konami.length - 1){
+        function pattern3Pat() {
+            if (konamiCount > konami.length - 1) {
                 $('#stone').attr('src', 'img/swordinstone.png');
                 konamiCount = 0;
-
                 code(pattern);
                 clearInterval(set3);
-
             } else {
                 ping.currentTime = 0;
                 ping.play();
-                // charge.pause();
 
                 if (konami[konamiCount] === 'ArrowUp') {
                     $('#stone').attr('src', 'img/goldtop.png');
@@ -413,11 +331,12 @@
         var set3 = setInterval(pattern3Pat, 500);
     }
 
-
     setTimeout(function () {
         pattern1();
     }, 5000);
 </script>
+
+<!-- Optional JavaScript -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
