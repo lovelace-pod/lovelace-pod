@@ -10,7 +10,7 @@ blast2.volume = .5;
 blast3.volume = .5;
 var bdelay = 0;
 var bdelay2 = 0;
-var bdelay3 = 4000;
+var bdelay3 = 2000;
 var swoosh = new Audio("sound/Swoosh 3-SoundBible.com-1573211927.mp3");
 var ballBl = new Audio("sound/Explosion+3.mp3");
 var slice = new Audio("sound/Decapitation-SoundBible.com-800292304.mp3");
@@ -21,6 +21,8 @@ var phase = 1;
 var chargeOn = 0;
 // var yourHP = 6;
 ballPos = 0;
+
+
 
 var dkonamiCount = 0;
 var dkonami = ['ArrowUp', 'ArrowLeft', 'ArrowRight', 'ArrowDown'];

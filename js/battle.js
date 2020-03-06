@@ -42,7 +42,7 @@ document.getElementById('startBut').addEventListener('click', adds);
 
 function dragonHit() {
     if (dragonHP === 2){
-        bdelay3 = 700;
+        bdelay3 = 750;
     }
 
     if (dragonHP <= 0){

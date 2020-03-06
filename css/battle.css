@@ -11,6 +11,10 @@ body {
     font-size: 1.5em;
 }
 
+body { /* ...or body.dialogShowing */
+    overflow: hidden;
+}
+
 #lowDiv {
     /*height: 0em;*/
     /*width: 0em;*/
