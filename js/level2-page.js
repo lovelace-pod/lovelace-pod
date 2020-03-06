@@ -4,7 +4,7 @@
 let i = 0;
 let startTxt = ["Man, that guy was weird...", "I know he went this way because I can hear him.", " Wait that sounds too loud to be him..."];
 let endTxt = ["                    Now that's over let's see where to go","",""];
-let endTxt1 = "                                    I'll choose that way I guess";
+let endTxt1 = "                   I'll choose that way I guess";
 let txtElement = $("#body_text")[0];
 let txtElement1 = $("#body_text1")[0];
 // console.log(txtElement);
