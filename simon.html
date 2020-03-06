@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- NES CSS -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
+    <!-- Player 2 font -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <title>Home Version</title>
+    <style>
+
+        html, body {
+            overflow: hidden;
+        }
+
+        #mainContainer h1 {
+            top: 45%;
+            left: 39%;
+            z-index: 1;
+        }
+
+        #mainContainer a {
+            top: 65%;
+            left: 45%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /*#Kirby {*/
+        /*    height: 150px;*/
+        /*    bottom: 7%;*/
+        /*    left: 110%;*/
+        /*    z-index: 1;*/
+        /*    animation: kirby-walk 15s 1;*/
+        /*    animation-timing-function: linear;*/
+        /*}*/
+
+        /*@keyframes kirby-walk {*/
+        /*    from {*/
+        /*        left: -110%*/
+        /*    }*/
+        /*    to {*/
+        /*        left: 110%*/
+        /*    }*/
+        /*}*/
+
+        .stone {
+            /*position: absolute;*/
+            z-index: 20;
+            /*display: inline-block;*/
+            left: -12em;
+            top: -17em;
+            align-self: center;
+            position: relative;
+        }
+
+        .stone2 {
+            /*position: absolute;*/
+            z-index: 20;
+            /*display: inline-block;*/
+            left: -5em;
+            top: -17em;
+            align-self: center;
+            position: relative;
+        }
+
+        .stone2 {
+            /*position: absolute;*/
+            z-index: 20;
+            /*display: inline-block;*/
+            left: -5em;
+            top: -17em;
+            align-self: center;
+            position: relative;
+        }
+
+        .stone3 {
+            /*position: absolute;*/
+            z-index: 20;
+            /*display: inline-block;*/
+            left: -15em;
+            top: -10em;
+            align-self: center;
+            position: relative;
+        }
+
+        #glow {
+            /*position: absolute;*/
+            z-index: 20;
+            /*display: inline-block;*/
+            left: -12em;
+            top: -17em;
+            align-self: center;
+            position: relative;
+        }
+
+        #stoneDiv {
+            height: 0em;
+            width: 0em;
+            position: absolute;
+            align-self: center;
+
+        }
+
+        .heartDiv{
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            position: absolute;
+        }
+
+        .heart {
+            z-index: 21;
+            max-height: 50px;
+            max-width: 50px;
+            height: auto;
+            width: auto;
+            margin-left:2px;
+            margin-top: 2px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="heartDiv">
+    <img src="" id="heart1" class="heart">
+    <img src="" id="heart2" class="heart">
+    <img src="" id="heart3" class="heart">
+    <img src="" id="heart4" class="heart">
+    <img src="" id="heart5" class="heart">
+
+
+</div>
+
+
+<!------ Main container-->
+<div class="container-fluid d-flex justify-content-center align-content-center flex-column m-0 p-0 position-relative vh-100 vw-100"
+     id="mainContainer">
+    <!--    <h1 class="position-absolute">Lovelace</h1>-->
+    <div id="stoneDiv">
+        <img src="img/swordinstone.png" alt="" id="stone" class="stone">
+        <!--        <img src="img/glow.gif" alt="" id="glow">-->
+    </div>
+
+    <img src="img/background-10.png" alt="" id="background-image" class="m-0 p-0 h-100 w-100">
+    <!--    <a class="nes-btn mx-auto px-3 position-absolute" href="lead-in-page.html">Start</a>-->
+    <div class="row" id="text">
+        <div class="col-12 w-100 bg-secondary" style="height: 150px">
+            <p class="text-wrap" id="body_text"></p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-2.2.4.js"></script>
+<script src="js/hearts.js"></script>
+<script>
+    var maintrack = new Audio("sound/Power - AShamaluevMusic.mp3");
+
+    var blast = new Audio("sound/Grenade-SoundBible.com-2124844747.mp3");
+
+    //
+    var ping = new Audio("sound/pin_dropping-Brian_Rocca-2084700791.mp3");
+
+    // var konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
+    //
+    // var konamiCount = 0;
+    //
+    // $(document).keyup(function (event) {
+    //     if (event.key === konami[konamiCount] && konamiCount + 1 === konami.length || event.key !== konami[konamiCount]) {
+    //         konamiCount + 1 === konami.length ? $('#pic').attr('src', 'img/bazooka.jpg') : false;
+    //         konamiCount = 0;
+    //     } else {
+    //         konamiCount++;
+    //     }
+    // });
+
+    var konami = [];
+    var konamiCount = 0;
+    var pattern = 1;
+
+    function final() {
+        $('#stone').attr('src', '');
+        $('#stone').removeClass('stone').addClass('stone2');
+        $('#stone').attr('src', 'img/glow.gif');
+        blast.play();
+        $('#stone').click(function () {
+            maintrack.play();
+            $('#stone').attr('src', '');
+            $('#stone').attr('src', 'img/headstart.gif');
+            $('#stone').removeClass('stone2').addClass('stone3');
+
+        });
+
+    }
+
+    function code(pat) {
+        console.log('hi from code' + pat);
+
+        $(document).keyup(function (event) {
+
+
+            // if (event.key === konami[konamiCount] && konamiCount + 1 === konami.length || event.key !== konami[konamiCount]) {
+            //     konamiCount + 1 === konami.length ? $('#pic').attr('src', 'img/bazooka.jpg') : false;
+            //     konamiCount = 0;
+            // } else {
+            //     konamiCount++;
+            // }
+
+            if (event.key === konami[konamiCount]) {
+                console.log('success');
+            }
+
+            if (event.key === konami[konamiCount]) {
+                if (konamiCount + 1 === konami.length) {
+
+
+                    $('#stone').attr('src', 'img/stonecomplete.png');
+                    konamiCount = 0;
+                    if (pat === 1) {
+                        setTimeout(function () {
+                            pattern++;
+                            $('#stone').attr('src', 'img/swordinstone.png');
+                            $(document).unbind();
+                            pattern2();
+                        }, 2000);
+
+                    } else if (pat === 2) {
+                        setTimeout(function () {
+                            pattern++;
+                            $('#stone').attr('src', 'img/swordinstone.png');
+                            $(document).unbind();
+                            pattern3();
+                        }, 2000);
+                    } else if (pat === 3) {
+                        $(document).unbind();
+                        console.log('done');
+                        final();
+                    }
+                } else {
+                    if (event.key === 'ArrowUp') {
+                        $('#stone').attr('src', 'img/goldtop.png');
+                    }
+                    if (event.key === 'ArrowLeft') {
+                        $('#stone').attr('src', 'img/goldleft.png');
+                    }
+                    if (event.key === 'ArrowRight') {
+                        $('#stone').attr('src', 'img/goldright.png');
+                    }
+                    konamiCount++;
+                }
+            } else {
+                console.log(pat);
+                $('#stone').attr('src', 'img/swordinstone.png');
+                konamiCount = 0;
+                $(document).unbind();
+                console.log(event.key);
+                console.log(konami[konamiCount]);
+                if (pat === 1){
+                    yourHP--;
+                    hearts(yourHP);
+                    $('#stone').attr('src', 'img/swordinstone.png');
+                    $(document).unbind();
+                    setTimeout(function () {
+                        pattern1();
+                    }, 1000);
+
+                } else if (pat === 2){
+                    yourHP--;
+                    hearts(yourHP);
+                    $('#stone').attr('src', 'img/swordinstone.png');
+                    $(document).unbind();
+                    setTimeout(function () {
+
+                        pattern2();
+                    }, 1000);
+                } else if (pat === 3){
+                    yourHP--;
+                    hearts(yourHP);
+                    $('#stone').attr('src', 'img/swordinstone.png');
+                    $(document).unbind();
+                    setTimeout(function () {
+
+                        pattern3();
+                    }, 1000);
+                }
+            }
+        });
+    }
+
+    function pattern1() {
+        // pattern = 1;
+        konamiCount = 0;
+        konami = ['ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
+
+        function pattern1Pat (){
+            if (konamiCount > konami.length - 1){
+                $('#stone').attr('src', 'img/swordinstone.png');
+                konamiCount = 0;
+
+                code(pattern);
+                clearInterval(set1);
+
+            } else {
+                ping.currentTime = 0;
+                ping.play();
+                // charge.pause();
+
+                if (konami[konamiCount] === 'ArrowUp') {
+                    $('#stone').attr('src', 'img/goldtop.png');
+                }
+                if (konami[konamiCount] === 'ArrowLeft') {
+                    $('#stone').attr('src', 'img/goldleft.png');
+                }
+                if (konami[konamiCount] === 'ArrowRight') {
+                    $('#stone').attr('src', 'img/goldright.png');
+                }
+                konamiCount++;
+            }
+        }
+
+        var set1 = setInterval(pattern1Pat, 500);
+
+
+    }
+
+    function pattern2() {
+        // pattern = 2;
+        konamiCount = 0;
+        konami = ['ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowUp', 'ArrowRight'];
+        function pattern2Pat (){
+            if (konamiCount > konami.length - 1){
+                $('#stone').attr('src', 'img/swordinstone.png');
+                konamiCount = 0;
+
+                code(pattern);
+                clearInterval(set2);
+
+            } else {
+                ping.currentTime = 0;
+                ping.play();
+                // charge.pause();
+
+                if (konami[konamiCount] === 'ArrowUp') {
+                    $('#stone').attr('src', 'img/goldtop.png');
+                }
+                if (konami[konamiCount] === 'ArrowLeft') {
+                    $('#stone').attr('src', 'img/goldleft.png');
+                }
+                if (konami[konamiCount] === 'ArrowRight') {
+                    $('#stone').attr('src', 'img/goldright.png');
+                }
+                konamiCount++;
+            }
+        }
+
+        var set2 = setInterval(pattern2Pat, 500);
+    }
+
+    function pattern3() {
+        // pattern = 3;
+        konamiCount = 0;
+        konami = ['ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'ArrowUp'];
+
+        function pattern3Pat (){
+            if (konamiCount > konami.length - 1){
+                $('#stone').attr('src', 'img/swordinstone.png');
+                konamiCount = 0;
+
+                code(pattern);
+                clearInterval(set3);
+
+            } else {
+                ping.currentTime = 0;
+                ping.play();
+                // charge.pause();
+
+                if (konami[konamiCount] === 'ArrowUp') {
+                    $('#stone').attr('src', 'img/goldtop.png');
+                }
+                if (konami[konamiCount] === 'ArrowLeft') {
+                    $('#stone').attr('src', 'img/goldleft.png');
+                }
+                if (konami[konamiCount] === 'ArrowRight') {
+                    $('#stone').attr('src', 'img/goldright.png');
+                }
+                konamiCount++;
+            }
+        }
+
+        var set3 = setInterval(pattern3Pat, 500);
+    }
+
+
+    setTimeout(function () {
+        pattern1();
+    }, 5000);
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
