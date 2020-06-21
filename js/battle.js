@@ -18,7 +18,7 @@ var rect = document.body.getBoundingClientRect();
 document.getElementById('bigDragon').setAttribute('draggable', false);
 document.getElementById('startBut').addEventListener('click', adds);
 
-
+// character hits dragon
 function dragonHit() {
     if (dragonHP === 2 && hardMode === 0) {
         bdelay3 = 3000;
@@ -41,11 +41,12 @@ function dragonHit() {
         }, 4000);
         setTimeout(function () {
             location.replace("outro-page.html");
-        }, 30000);
+        }, 90000);
 
     }
 }
 
+// character movement
 function adds() {
     roar.play();
     maintrack.currentTime = 0;

@@ -31,13 +31,17 @@ function heartEnd() {
     localStorage.setItem('maxHP', maxHP);
 }
 
+
+// health bar function
 function hearts(hp) {
     switch (hp) {
         case 0:
             $('#heart1').attr('src', 'img/hearts-1.png.png');
-            roar.play();
+            maintrack.pause();
+
             setTimeout(function () {
-                maintrack.pause();
+                roar.play();
+
                 location.replace("outro-page.html");
             }, 2000);
 

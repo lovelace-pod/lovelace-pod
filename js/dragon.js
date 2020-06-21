@@ -28,7 +28,7 @@ $(document).keyup(function (event) {
     if (event.key === '\\') {
         dragonHP = 6;
         hardMode = 1;
-        bdelay3 = 300;
+        bdelay3 = 1500;
     }
     if (event.key === dkonami[dkonamiCount] && dkonamiCount + 1 === dkonami.length || event.key !== dkonami[dkonamiCount]) {
         if (dkonamiCount + 1 === dkonami.length && hardMode === 0) {
